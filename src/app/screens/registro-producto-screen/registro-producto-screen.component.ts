@@ -16,7 +16,6 @@ export class RegistroProductoScreenComponent implements OnInit {
   //Para detectar errores
   public errors:any ={};
 
-
   constructor(
     private location: Location,
     private productosService: ProductosService,
