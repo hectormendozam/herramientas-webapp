@@ -14,6 +14,8 @@ export class RegistroScreenComponent implements OnInit {
   //Aquí van las variables
   public editar:boolean = false;
   public user: any = {};
+  public array_user: any[] = [];
+
   //Para contraseñas
   public hide_1: boolean = false;
   public hide_2: boolean = false;
@@ -80,7 +82,10 @@ export class RegistroScreenComponent implements OnInit {
     //Valida la contraseña
     if(this.user.password == this.user.confirmar_password){
       //Funcion para registrarse
-      alert("Todo chido vamos a registrar");
+      +      //alert("Todo chido vamos a registrar");
+      this.array_user.push(this.user);
+      this.user = this.usuariosService.esquemaUser();
+      console.log("Usuarios registrados: ", this.array_user);    
     }else{
       alert("Las contraseñas no coinciden");
       this.user.password="";
