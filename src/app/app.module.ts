@@ -14,6 +14,7 @@ import {MatInputModule} from '@angular/material/input';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatTableModule} from '@angular/material/table';
 //Pantallas
 import { LoginScreenComponent } from './screens/login-screen/login-screen.component';
 import { RegistroScreenComponent } from './screens/registro-screen/registro-screen.component';
@@ -47,8 +48,9 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) = {};
     MatNativeDateModule,
     MatFormFieldModule,
     NgxMaskModule.forRoot(options),
-    HttpClientModule
-  ],
+    HttpClientModule,
+    MatTableModule
+    ],
   providers:
   [
     {provide: MAT_DATE_LOCALE, useValue: 'es-ES'},
