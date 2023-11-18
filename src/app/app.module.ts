@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 
 // Este import es para los servicios http
 import { HttpClientModule } from '@angular/common/http';
+
 //Componentes
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms'
@@ -15,15 +16,20 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatTableModule} from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+
 //Pantallas
 import { LoginScreenComponent } from './screens/login-screen/login-screen.component';
 import { RegistroScreenComponent } from './screens/registro-screen/registro-screen.component';
 import { HomeScreenComponent } from './screens/home-screen/home-screen.component';
 import { RegistroProductoScreenComponent } from './screens/registro-producto-screen/registro-producto-screen.component';
+
 //Cambia el idioma a español
 import { MAT_DATE_LOCALE } from '@angular/material/core';
+
 //ngx mask
 import { NgxMaskModule, IConfig } from 'ngx-mask';
+//Options mask
 export const options: Partial<IConfig> | (() => Partial<IConfig>) = {};
 
 @NgModule
@@ -49,6 +55,7 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) = {};
     MatFormFieldModule,
     NgxMaskModule.forRoot(options),
     HttpClientModule,
+    MatPaginatorModule,
     MatTableModule
     ],
   providers:
