@@ -17,6 +17,7 @@ import {MatNativeDateModule} from '@angular/material/core';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatTableModule} from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import {MatDialogModule} from '@angular/material/dialog';
 
 //Pantallas
 import { LoginScreenComponent } from './screens/login-screen/login-screen.component';
@@ -29,6 +30,7 @@ import { MAT_DATE_LOCALE } from '@angular/material/core';
 
 //ngx mask
 import { NgxMaskModule, IConfig } from 'ngx-mask';
+import { EliminarUserModalComponent } from './modals/eliminar-user-modal/eliminar-user-modal.component';
 //Options mask
 export const options: Partial<IConfig> | (() => Partial<IConfig>) = {};
 
@@ -41,6 +43,7 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) = {};
     RegistroScreenComponent,
     HomeScreenComponent,
     RegistroProductoScreenComponent,
+    EliminarUserModalComponent,
   ],
   imports: 
   [
@@ -56,7 +59,8 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) = {};
     NgxMaskModule.forRoot(options),
     HttpClientModule,
     MatPaginatorModule,
-    MatTableModule
+    MatTableModule,
+    MatDialogModule
     ],
   providers:
   [

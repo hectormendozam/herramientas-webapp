@@ -4,6 +4,8 @@ import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { FacadeService } from 'src/app/services/facade.service';
 import { UsuariosService } from 'src/app/services/usuarios.service';
+import { MatDialog } from '@angular/material/dialog';
+import { EliminarUserModalComponent } from 'src/app/modals/eliminar-user-modal/eliminar-user-modal.component';
 
 @Component({
   selector: 'app-home-screen',
@@ -28,7 +30,8 @@ export class HomeScreenComponent implements OnInit {
     constructor(
       private facadeService: FacadeService,
       private usuariosService: UsuariosService,
-      private router: Router
+      private router: Router,
+      public dialog: MatDialog
     ) { }
   
     ngOnInit(): void {
@@ -112,9 +115,24 @@ export class HomeScreenComponent implements OnInit {
       this.router.navigate(["registro/"+idUser]);
     }
 
-    //Función para eliminar
-    public delete(idUser: number){
-    }
+  //Función para eliminar
+  public delete(idUser: number){
+    const dialogRef = this.dialog.open(EliminarUserModalComponent,{
+      data: {id: idUser}, //Se pasan valores a través del componente
+      height: '268px',
+      width: '328px',
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      if(result.isDelete){
+        console.log("Usuario eliminado");
+        //Recargar página
+        window.location.reload();
+      }else{
+        console.log("No se eliminó el usuario");
+        //alert("No se eliminó el usuario");
+      }
+    });
+  }
     
   }//Aquí cierra la clase principal
 

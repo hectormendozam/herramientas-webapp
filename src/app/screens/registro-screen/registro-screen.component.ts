@@ -102,8 +102,7 @@ export class RegistroScreenComponent implements OnInit {
     //Validar
     this.errors = [];
 
-    this.errors = this.usuariosService.validarUsuario(this.user);
-    if(!$.isEmptyObject(this.errors)){
+    this.errors = this.usuariosService.validarUsuario(this.user, this.editar);    if(!$.isEmptyObject(this.errors)){
       //Pasa la validación y sale de la función
       return false;
     }
@@ -128,7 +127,23 @@ export class RegistroScreenComponent implements OnInit {
   }
 
   public actualizar(){
-    
+    //Validación
+    this.errors = [];
+    this.errors = this.usuariosService.validarUsuario(this.user, this.editar);
+    if(!$.isEmptyObject(this.errors)){
+      return false;
+    }
+    console.log("Pasó la validación");
+    this.usuariosService.editarUsuario(this.user).subscribe(
+      (response)=>{
+        alert("Usuario editado correctamente");
+        console.log("Usuario editado: ", response);
+        //Si se editó, entonces mandar al home
+        this.router.navigate(["home"]);
+      }, (error)=>{
+        alert("No se pudo editar usuario");
+      }
+    );
   }
 
   //Función para detectar el cambio de fecha
