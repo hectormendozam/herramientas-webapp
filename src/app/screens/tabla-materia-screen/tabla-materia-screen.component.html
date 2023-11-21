@@ -4,8 +4,8 @@
             <div class="header-home">
                 <button class="logout-hide" mat-flat-button>Cerrar sesión</button>
                 <!-- <mat-icon class="icon-back" (click)="logout()">arrow_back</mat-icon> -->
-                <span class="title">Lista de usuarios</span>
-                <button class="logout" mat-flat-button color="warn" (click)="logout()">Cerrar sesión</button>
+                <span class="title">Lista de materias</span>
+                <button class="logout-hide" mat-flat-button color="warn">Regresar a Home</button>
             </div>
             <div class="body-home">
                 <div class="mat-elevation-z8">
@@ -75,8 +75,7 @@
                     </mat-paginator>
                 </div>
                 <div class="section-buttons">
-                    <button class="btn-primary" (click)="goTablaMaterias()">Mostrar Materias</button>
-                    <button class="btn-primary" (click)="goRegistroMaterias()">Registrar Materias</button>
+                    <button class="btn-primary" (click)="goHome()">Regresar</button>
                 </div>
             </div>
         </div>

@@ -5,21 +5,19 @@ import { Router } from '@angular/router';
 import { FacadeService } from 'src/app/services/facade.service';
 import { UsuariosService } from 'src/app/services/usuarios.service';
 import { MatDialog } from '@angular/material/dialog';
-import { EliminarUserModalComponent } from 'src/app/modals/eliminar-user-modal/eliminar-user-modal.component';
+import { EliminarMateriaModalComponent } from 'src/app/modals/eliminar-materia-modal/eliminar-materia-modal.component';
 
 @Component({
-  selector: 'app-home-screen',
-  templateUrl: './home-screen.component.html',
-  styleUrls: ['./home-screen.component.scss']
+  selector: 'app-tabla-materia-screen',
+  templateUrl: './tabla-materia-screen.component.html',
+  styleUrls: ['./tabla-materia-screen.component.scss']
 })
-
-export class HomeScreenComponent implements OnInit {
-
+export class TablaMateriaScreenComponent implements OnInit {
   public token : string = "";
   public lista_usuarios: any[] = [];
 
-  displayedColumns: string[] = ['matricula', 'nombre', 'email', 'fecha_nacimiento', 'edad', 'curp', 'rfc', 'telefono', 'ocupacion', 'editar', 'eliminar'];
-  dataSource = new MatTableDataSource<DatosUsuario>(this.lista_usuarios as DatosUsuario[]);
+  displayedColumns: string[] = ['nrc', 'nombre_materia', 'seccion', 'dias', 'horario_inicio', 'horario_final', 'salon', 'programa_educativo'];
+  dataSource = new MatTableDataSource<DatosMateria>(this.lista_usuarios as DatosMateria[]);
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
@@ -88,10 +86,10 @@ export class HomeScreenComponent implements OnInit {
             usuario.email = usuario.user.email;
           });
           console.log("Otro user: ", this.lista_usuarios);
-          this.dataSource = new MatTableDataSource<DatosUsuario>(this.lista_usuarios as DatosUsuario[]);
+          this.dataSource = new MatTableDataSource<DatosMateria>(this.lista_usuarios as DatosMateria[]);
         }
       }, (error)=>{
-        alert("No se pudo obtener la lista de usuarios");
+        alert("No se pudo obtener la lista de materias");
       }
     );
   }
@@ -118,7 +116,7 @@ export class HomeScreenComponent implements OnInit {
   //Función para eliminar
   public delete(idUser: number){
     console.log("User:", idUser);
-    const dialogRef = this.dialog.open(EliminarUserModalComponent,{
+    const dialogRef = this.dialog.open(EliminarMateriaModalComponent,{
       data: {id: idUser}, //Se pasan valores a través del componente
       height: '268px',
       width: '328px',
@@ -135,28 +133,21 @@ export class HomeScreenComponent implements OnInit {
       }
     });
   }
-  
-  public goTablaMaterias(){
-    this.router.navigate(["tabla-materia"]);
+
+  public goHome(){
+    this.router.navigate(["home"]);
   }
 
-  public goRegistroMaterias(){
-    this.router.navigate(["registro-materia"]);
-  }
-
-  }//Aquí cierra la clase principal
+} //Aqui termina la clase
 
   //Esto va fuera de la llave que cierra la clase
-  export interface DatosUsuario {
-  id: number,
-  matricula: number;
-  first_name: string;
-  last_name: string;
-  email: string;
-  fecha_nacimiento: string,
-  curp: string,
-  rfc: string,
-  edad: number,
-  telefono: string,
-  ocupacion: string
-  }
+  export interface DatosMateria {
+    nrc: number,
+    nombre_materia: string;
+    seccion: number;
+    dias: string;
+    hora_inicio: string;
+    hora_final: string,
+    salon: string,
+    programa_educativo: string,
+    }
