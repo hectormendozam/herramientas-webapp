@@ -9,7 +9,6 @@ import { FacadeService } from './facade.service';
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
-
 @Injectable({
   providedIn: 'root'
 })
@@ -40,62 +39,76 @@ export class MateriasService {
     console.log("Validando materia... ", data);
     let error: any = [];
 
-    if(!this.validatorService.required(data["matricula"])){
-      error["matricula"] = this.errorService.required;
+    if(!this.validatorService.required(data["nrc"])){
+      error["nrc"] = this.errorService.required;
+    }else if(!this.validatorService.min(data["nrc"], 3)){
+      error["nrc"] = this.errorService.min(3);
+      alert("La longitud de caracteres de la NRC es menor, deben ser 3");
+    }else if(!this.validatorService.max(data["nrc"], 3)){
+      error["nrc"] = this.errorService.max(3);
+      alert("La longitud de caracteres de la NRC es mayor, deben ser 3");
+    }else if(!this.validatorService.numeric(data["nrc"])){
+      alert("El formato es solo números");
+    } 
+
+    if(!this.validatorService.required(data["nombre_materia"])){
+      error["nombre_materia"] = this.errorService.required;
+    }else if(!this.validatorService.max(data["nombre_materia"], 40)){
+      error["nombre_materia"] = this.errorService.max(40);
     }
 
-    if(!this.validatorService.required(data["first_name"])){
-      error["first_name"] = this.errorService.required;
-    }
-
-    if(!this.validatorService.required(data["last_name"])){
-      error["last_name"] = this.errorService.required;
-    }
-
-    if(!this.validatorService.required(data["email"])){
-      error["email"] = this.errorService.required;
-    }else if(!this.validatorService.max(data["email"], 40)){
-      error["email"] = this.errorService.max(40);
-    }else if (!this.validatorService.email(data['email'])) {
-      error['email'] = this.errorService.email;
-    }
-
-    if(!this.validatorService.required(data["fecha_nacimiento"])){
-      error["fecha_nacimiento"] = this.errorService.required;
-    }
-
-    if(!this.validatorService.required(data["curp"])){
-      error["curp"] = this.errorService.required;
-    }else if(!this.validatorService.min(data["curp"], 18)){
-      error["curp"] = this.errorService.min(18);
-      alert("La longitud de caracteres de la CURP es menor, deben ser 18");
-    }else if(!this.validatorService.max(data["curp"], 18)){
-      error["curp"] = this.errorService.max(18);
-      alert("La longitud de caracteres de la CURP es mayor, deben ser 18");
-    }
-
-    if(!this.validatorService.required(data["rfc"])){
-      error["rfc"] = this.errorService.required;
-    }else if(!this.validatorService.min(data["rfc"], 12)){
-      error["rfc"] = this.errorService.min(12);
-      alert("La longitud de caracteres deL RFC es menor, deben ser 12");
-    }else if(!this.validatorService.max(data["rfc"], 13)){
-      error["rfc"] = this.errorService.max(13);
-      alert("La longitud de caracteres deL RFC es mayor, deben ser 13");
-    }
-
-    if(!this.validatorService.required(data["edad"])){
-      error["edad"] = this.errorService.required;
-    }else if(!this.validatorService.numeric(data["edad"])){
+    if(!this.validatorService.required(data["seccion"])){
+      error["seccion"] = this.errorService.required;
+    }else if(!this.validatorService.min(data["seccion"], 3)){
+      error["seccion"] = this.errorService.min(3);
+      alert("La longitud de caracteres de la sección es menor, deben ser 3");
+    }else if(!this.validatorService.max(data["seccion"], 3)){
+      error["seccion"] = this.errorService.max(3);
+      alert("La longitud de caracteres de la sección es mayor, deben ser 3");
+    }else if(!this.validatorService.numeric(data["seccion"])){
       alert("El formato es solo números");
     }
 
-    if(!this.validatorService.required(data["telefono"])){
-      error["telefono"] = this.errorService.required;
+    if(!this.validatorService.required(data["dias"])){
+      error["dias"] = this.errorService.required;
+    }else if(!this.validatorService.max(data["dias"], 40)){
+      error["dias"] = this.errorService.max(40);
     }
 
-    if(!this.validatorService.required(data["ocupacion"])){
-      error["ocupacion"] = this.errorService.required;
+    if(!this.validatorService.required(data["hora_inicio"])){
+      error["hora_inicio"] = this.errorService.required;
+    }else if(!this.validatorService.min(data["hora_inicio"], 4)){
+      error["hora_inicio"] = this.errorService.min(4);
+      alert("La longitud de caracteres de la hora es menor, deben ser 4");
+    }else if(!this.validatorService.max(data["hora_inicio"], 4)){
+      error["hora_inicio"] = this.errorService.max(4);
+      alert("La longitud de caracteres de la hora es mayor, deben ser 4");
+    } 
+
+    if(!this.validatorService.required(data["hora_final"])){
+      error["hora_final"] = this.errorService.required;
+    }else if(!this.validatorService.min(data["hora_final"], 4)){
+      error["hora_final"] = this.errorService.min(4);
+      alert("La longitud de caracteres de la hora es menor, deben ser 4");
+    }else if(!this.validatorService.max(data["hora_final"], 4)){
+      error["hora_final"] = this.errorService.max(4);
+      alert("La longitud de caracteres de la hora es mayor, deben ser 4");
+    } 
+
+    if(!this.validatorService.required(data["salon"])){
+      error["salon"] = this.errorService.required;
+    }else if(!this.validatorService.min(data["salon"], 3)){
+      error["salon"] = this.errorService.min(3);
+      alert("La longitud de caracteres del salón es menor, deben ser 3");
+    }else if(!this.validatorService.max(data["salon"], 3)){
+      error["salon"] = this.errorService.max(3);
+      alert("La longitud de caracteres del salón es mayor, deben ser 3");
+    }else if(!this.validatorService.numeric(data["salon"])){
+      alert("El formato es solo números");
+    }
+
+    if(!this.validatorService.required(data["programa_educativo"])){
+      error["programa_educativo"] = this.errorService.required;
     }
 
     return error;

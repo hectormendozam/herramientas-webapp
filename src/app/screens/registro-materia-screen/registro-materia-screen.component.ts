@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 import { MateriasService } from 'src/app/services/materias.service';
 import { ActivatedRoute, Router } from '@angular/router';
-
 declare var $:any;
 
 @Component({
@@ -26,11 +25,11 @@ export class RegistroMateriaScreenComponent implements OnInit {
     private router: Router,
     private location: Location,
     public activatedRoute: ActivatedRoute,
-    private MateriasService: MateriasService,
+    private materiasService: MateriasService,
   ) { }
 
   ngOnInit(): void {
-    this.materia = this.MateriasService.esquemaMateria();
+    this.materia = this.materiasService.esquemaMateria();
     //El primer if valida si existe un parámetro en la URL
     if(this.activatedRoute.snapshot.params['id'] != undefined){
       this.editar = true;
@@ -38,15 +37,15 @@ export class RegistroMateriaScreenComponent implements OnInit {
       this.idMateria = this.activatedRoute.snapshot.params['id'];
       console.log("ID Materia: ", this.idMateria);
       //Al iniciar la vista obtiene el usuario por su ID
-      this.obtenerUserByID();
+      this.obtenerMateriaByID();
     }
     //Imprimir datos en consola
-    console.log("User: ", this.materia);
+    console.log("Materia: ", this.materia);
   }
 
   //Función para obtener un solo usuario por su ID
-  public obtenerUserByID(){
-    this.MateriasService.getMateriaByID(this.idMateria).subscribe(
+  public obtenerMateriaByID(){
+    this.materiasService.getMateriaByID(this.idMateria).subscribe(
       (response)=>{
         this.materia = response;
         //Agregamos valores faltantes
@@ -74,18 +73,18 @@ export class RegistroMateriaScreenComponent implements OnInit {
     //Validar
     this.errors = [];
 
-    this.errors = this.MateriasService.validarMateria(this.materia, this.editar);    if(!$.isEmptyObject(this.errors)){
+    this.errors = this.materiasService.validarMateria(this.materia, this.editar);    if(!$.isEmptyObject(this.errors)){
       //Pasa la validación y sale de la función
       return false;
     }
       //Funcion para registrarse - llamada al servicio
-      this.MateriasService.registrarMateria(this.materia).subscribe(
+      this.materiasService.registrarMateria(this.materia).subscribe(
       (response)=>{
-      alert("Usuario registrado correctamente");
-      console.log("Usuario registrado: ", response);
+      alert("Materia registrada correctamente");
+      console.log("Materia registrada: ", response);
       this.router.navigate(["/"]);
       }, (error)=>{
-        alert("No se pudo registrar usuario");
+        alert("No se pudo registrar materia");
         console.log(error);
       }
     );   
@@ -94,19 +93,19 @@ export class RegistroMateriaScreenComponent implements OnInit {
   public actualizar(){
     //Validación
     this.errors = [];
-    this.errors = this.MateriasService.validarMateria(this.materia, this.editar);
+    this.errors = this.materiasService.validarMateria(this.materia, this.editar);
     if(!$.isEmptyObject(this.errors)){
       return false;
     }
     console.log("Pasó la validación");
-    this.MateriasService.editarMateria(this.materia).subscribe(
+    this.materiasService.editarMateria(this.materia).subscribe(
       (response)=>{
-        alert("Usuario editado correctamente");
-        console.log("Usuario editado: ", response);
+        alert("Materia editada correctamente");
+        console.log("Materia editada: ", response);
         //Si se editó, entonces mandar al home
         this.router.navigate(["home"]);
       }, (error)=>{
-        alert("No se pudo editar usuario");
+        alert("No se pudo editar materia");
       }
     );
   }

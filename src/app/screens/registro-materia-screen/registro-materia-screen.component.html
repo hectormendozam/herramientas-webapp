@@ -11,7 +11,7 @@
             <div class="body-registro">
                 <mat-form-field class="mat-input" appearance="outline">
                     <mat-label>NRC</mat-label>
-                    <input matInput [(ngModel)]="materia.nrc" name="nrc" mask='00000' placeholder="Escribe NRC">
+                    <input matInput [(ngModel)]="materia.nrc" name="nrc" mask='000' placeholder="Escribe NRC">
                 </mat-form-field>
                 <div *ngIf="errors.nrc" class="invalid-feedback">{{ errors.nrc }}</div>
 
@@ -35,19 +35,19 @@
 
                 <mat-form-field class="mat-input" appearance="outline">
                     <mat-label>Hora Inicial</mat-label>
-                    <input matInput [(ngModel)]="materia.hora_inicio" placeholder="Selecciona Hora de Inicio">
+                    <input matInput [(ngModel)]="materia.hora_inicio" mask='00:00' placeholder="Selecciona Hora de Inicio">
                 </mat-form-field>
                 <div *ngIf="errors.hora_inicio" class="invalid-feedback">{{ errors.hora_inicio }}</div>
     
                 <mat-form-field class="mat-input" appearance="outline">
                     <mat-label>Hora Final</mat-label>
-                    <input matInput [(ngModel)]="materia.hora_final" placeholder="Selecciona Hora de Finalización">
+                    <input matInput [(ngModel)]="materia.hora_final" mask='00:00' placeholder="Selecciona Hora de Finalización">
                 </mat-form-field>
                 <div *ngIf="errors.hora_final" class="invalid-feedback">{{ errors.hora_final }}</div>
     
                 <mat-form-field class="mat-input" appearance="outline">
                     <mat-label>Salón</mat-label>
-                    <input matInput [(ngModel)]="materia.salon" placeholder="Escribe salón">
+                    <input matInput [(ngModel)]="materia.salon" mask='000' placeholder="Escribe salón">
                 </mat-form-field>
                 <div *ngIf="errors.salon" class="invalid-feedback">{{ errors.salon }}</div>
     
