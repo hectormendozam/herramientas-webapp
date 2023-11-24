@@ -25,7 +25,7 @@ export class RegistroMateriaScreenComponent implements OnInit {
     private router: Router,
     private location: Location,
     public activatedRoute: ActivatedRoute,
-    private materiasService: MateriasService,
+    private materiasService: MateriasService
   ) { }
 
   ngOnInit(): void {
@@ -43,7 +43,7 @@ export class RegistroMateriaScreenComponent implements OnInit {
     console.log("Materia: ", this.materia);
   }
 
-  //Función para obtener un solo usuario por su ID
+  //Función para obtener una sola materia por su ID
   public obtenerMateriaByID(){
     this.materiasService.getMateriaByID(this.idMateria).subscribe(
       (response)=>{
@@ -103,7 +103,7 @@ export class RegistroMateriaScreenComponent implements OnInit {
         alert("Materia editada correctamente");
         console.log("Materia editada: ", response);
         //Si se editó, entonces mandar al home
-        this.router.navigate(["home"]);
+        this.router.navigate(["tabla-materia"]);
       }, (error)=>{
         alert("No se pudo editar materia");
       }

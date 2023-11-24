@@ -35,13 +35,13 @@
 
                 <mat-form-field class="mat-input" appearance="outline">
                     <mat-label>Hora Inicial</mat-label>
-                    <input matInput [(ngModel)]="materia.hora_inicio" mask='00:00' placeholder="Selecciona Hora de Inicio">
+                    <input matInput [(ngModel)]="materia.hora_inicio" type="time" placeholder="Selecciona Hora de Inicio">
                 </mat-form-field>
                 <div *ngIf="errors.hora_inicio" class="invalid-feedback">{{ errors.hora_inicio }}</div>
     
                 <mat-form-field class="mat-input" appearance="outline">
                     <mat-label>Hora Final</mat-label>
-                    <input matInput [(ngModel)]="materia.hora_final" mask='00:00' placeholder="Selecciona Hora de Finalización">
+                    <input matInput [(ngModel)]="materia.hora_final" type="time" placeholder="Selecciona Hora de Finalización">
                 </mat-form-field>
                 <div *ngIf="errors.hora_final" class="invalid-feedback">{{ errors.hora_final }}</div>
     

@@ -118,32 +118,32 @@ export class MateriasService {
    // Aqui se agregan servicios http
      // Servicio para registrar nueva materia
   public registrarMateria (data: any): Observable <any>{
-    return this.http.post<any>(`${environment.url_api}/users/`,data, httpOptions);
+    return this.http.post<any>(`${environment.url_api}/materias/`,data, httpOptions);
   }
 
     //Registrar materia
     public obtenerListaMaterias (): Observable <any>{
       var token = this.facadeService.getSessionToken();
       var headers = new HttpHeaders({ 'Content-Type': 'application/json' , 'Authorization': 'Bearer '+token});
-      return this.http.get<any>(`${environment.url_api}/lista-users/`, {headers:headers});
+      return this.http.get<any>(`${environment.url_api}/lista-materias/`, {headers:headers});
     }
 
       //Obtener una sola materia dependiendo su ID
     public getMateriaByID(idMateria: Number){
-      return this.http.get<any>(`${environment.url_api}/users/?id=${idMateria}`,httpOptions); 
+      return this.http.get<any>(`${environment.url_api}/materias/?id=${idMateria}`,httpOptions); 
     }
 
       //Servicio para actualizar una materia
   public editarMateria (data: any): Observable <any>{
     var token = this.facadeService.getSessionToken();
     var headers = new HttpHeaders({ 'Content-Type': 'application/json' , 'Authorization': 'Bearer '+token});
-    return this.http.put<any>(`${environment.url_api}/users-edit/`, data, {headers:headers});
+    return this.http.put<any>(`${environment.url_api}/materias-edit/`, data, {headers:headers});
   }
 
     //Eliminar materia
     public eliminarMateria(idMateria: number): Observable <any>{
       var token = this.facadeService.getSessionToken();
       var headers = new HttpHeaders({ 'Content-Type': 'application/json' , 'Authorization': 'Bearer '+token});
-      return this.http.delete<any>(`${environment.url_api}/users-edit/?id=${idMateria}`,{headers:headers});
+      return this.http.delete<any>(`${environment.url_api}/materias-edit/?id=${idMateria}`,{headers:headers});
     }
 }
