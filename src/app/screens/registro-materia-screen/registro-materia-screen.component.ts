@@ -82,7 +82,7 @@ export class RegistroMateriaScreenComponent implements OnInit {
       (response)=>{
       alert("Materia registrada correctamente");
       console.log("Materia registrada: ", response);
-      this.router.navigate(["/"]);
+      this.router.navigate(["home"]);
       }, (error)=>{
         alert("No se pudo registrar materia");
         console.log(error);

@@ -12,12 +12,13 @@ const routes: Routes = [
   // Aqui se agregan cada una de las rutas del proyecto
   {path : '', component: LoginScreenComponent, pathMatch: 'full'},
   {path : 'registro', component: RegistroScreenComponent, pathMatch: 'full'},
-  { path: 'registro/:id', component: RegistroScreenComponent, pathMatch: 'full' },
+  {path: 'registro/:id', component: RegistroScreenComponent, pathMatch: 'full' },
   {path : 'home', component: HomeScreenComponent, pathMatch: 'full'},
   {path : 'nuevo-login', component: NuevoLoginScreenComponent, pathMatch: 'full'},
   {path : 'registro-producto', component: RegistroProductoScreenComponent, pathMatch: 'full'},
   {path : 'registro-materia', component: RegistroMateriaScreenComponent, pathMatch: 'full'},
   {path : 'tabla-materia', component: TablaMateriaScreenComponent, pathMatch: 'full'},
+  {path : 'registro-materia/:id', component: RegistroMateriaScreenComponent, pathMatch: 'full'},
 ];
 
 @NgModule({

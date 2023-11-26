@@ -7,10 +7,10 @@ import { MateriasService } from 'src/app/services/materias.service';
   templateUrl: './eliminar-materia-modal.component.html',
   styleUrls: ['./eliminar-materia-modal.component.scss']
 })
-export class EliminarMateriaModalComponent {
+export class EliminarMateriaModalComponent implements OnInit{
 
   constructor(
-    public MateriasService: MateriasService,
+    public materiasService: MateriasService,
     private dialogRef: MatDialogRef<EliminarMateriaModalComponent>,
     @Inject (MAT_DIALOG_DATA) public data: any
   ) { }
@@ -23,8 +23,8 @@ export class EliminarMateriaModalComponent {
     this.dialogRef.close({isDelete:false});
   }
   
-  /*public eliminarUser(){
-    this.MateriaService.eliminarMateria(this.data.id).subscribe(
+  public eliminarMateria(){
+    this.materiasService.eliminarMateria(this.data.id).subscribe(
       (response)=>{
         console.log(response);
         this.dialogRef.close({isDelete:true});
@@ -32,5 +32,5 @@ export class EliminarMateriaModalComponent {
         this.dialogRef.close({isDelete:false});
       }
     );
-  }*/
+  }
 }

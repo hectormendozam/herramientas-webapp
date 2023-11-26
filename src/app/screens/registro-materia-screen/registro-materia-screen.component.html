@@ -11,7 +11,7 @@
             <div class="body-registro">
                 <mat-form-field class="mat-input" appearance="outline">
                     <mat-label>NRC</mat-label>
-                    <input matInput [(ngModel)]="materia.nrc" name="nrc" mask='000' placeholder="Escribe NRC">
+                    <input matInput [(ngModel)]="materia.nrc" name="nrc" mask='00000' placeholder="Escribe NRC">
                 </mat-form-field>
                 <div *ngIf="errors.nrc" class="invalid-feedback">{{ errors.nrc }}</div>
 

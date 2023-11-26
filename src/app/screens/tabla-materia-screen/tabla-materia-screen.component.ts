@@ -3,9 +3,9 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { FacadeService } from 'src/app/services/facade.service';
-import { UsuariosService } from 'src/app/services/usuarios.service';
 import { MatDialog } from '@angular/material/dialog';
 import { EliminarMateriaModalComponent } from 'src/app/modals/eliminar-materia-modal/eliminar-materia-modal.component';
+import { MateriasService } from 'src/app/services/materias.service';
 
 @Component({
   selector: 'app-tabla-materia-screen',
@@ -14,10 +14,11 @@ import { EliminarMateriaModalComponent } from 'src/app/modals/eliminar-materia-m
 })
 export class TablaMateriaScreenComponent implements OnInit {
   public token : string = "";
-  public lista_usuarios: any[] = [];
+  public lista_materias: any[] = [];
+  public materias: boolean = false;
 
-  displayedColumns: string[] = ['nrc', 'nombre_materia', 'seccion', 'dias', 'horario_inicio', 'horario_final', 'salon', 'programa_educativo'];
-  dataSource = new MatTableDataSource<DatosMateria>(this.lista_usuarios as DatosMateria[]);
+  displayedColumns: string[] = ['nrc', 'nombre_materia', 'seccion', 'dias', 'hora_inicio', 'hora_final', 'salon', 'programa_educativo', 'editar', 'eliminar'];
+  dataSource = new MatTableDataSource<DatosMateria>(this.lista_materias as DatosMateria[]);
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
@@ -27,7 +28,7 @@ export class TablaMateriaScreenComponent implements OnInit {
     
     constructor(
       private facadeService: FacadeService,
-      private usuariosService: UsuariosService,
+      private materiasService: MateriasService,
       private router: Router,
       public dialog: MatDialog
     ) { }
@@ -42,11 +43,17 @@ export class TablaMateriaScreenComponent implements OnInit {
       this.router.navigate([""]);
     }
     //Mandar a ejecutar la función
-      this.obtenerUsuarios();
+      this.obtenerMaterias();
 
       //Para paginador
       this.initPaginator();
   }
+
+  public removeSeconds(hora: string){
+    let hora_final = hora.split(":");
+    return hora_final[0] + ":" + hora_final[1];
+  }
+
         //Para paginacion
   //Paginador para Agentes
   public initPaginator(){
@@ -73,20 +80,13 @@ export class TablaMateriaScreenComponent implements OnInit {
   }
 
   //Obtener lista de usuarios
-  public obtenerUsuarios(){
-    this.usuariosService.obtenerListaUsers().subscribe(
+  public obtenerMaterias(){
+    this.materiasService.obtenerListaMaterias().subscribe(
       (response)=>{
-        this.lista_usuarios = response;
-        console.log("Lista users: ", this.lista_usuarios);
-        if(this.lista_usuarios.length > 0){
-          //Agregar datos del nombre e email
-          this.lista_usuarios.forEach(usuario => {
-            usuario.first_name = usuario.user.first_name;
-            usuario.last_name = usuario.user.last_name;
-            usuario.email = usuario.user.email;
-          });
-          console.log("Otro user: ", this.lista_usuarios);
-          this.dataSource = new MatTableDataSource<DatosMateria>(this.lista_usuarios as DatosMateria[]);
+        this.lista_materias = response;
+        console.log("Lista materias: ", this.lista_materias);
+        if(this.lista_materias.length > 0){
+            this.dataSource = new MatTableDataSource<DatosMateria>(this.lista_materias as DatosMateria[]);
         }
       }, (error)=>{
         alert("No se pudo obtener la lista de materias");
@@ -109,27 +109,26 @@ export class TablaMateriaScreenComponent implements OnInit {
   }
 
     //Funcion para editar
-    public goEditar(idUser: number){
-      this.router.navigate(["registro/"+idUser]);
+    public goEditar(idMateria: number){
+      this.router.navigate(["registro-materia/"+idMateria]);
     }
 
   //Función para eliminar
-  public delete(idUser: number){
-    console.log("User:", idUser);
+  public delete(idMateria: number){
+    console.log("Materia:", idMateria);
     const dialogRef = this.dialog.open(EliminarMateriaModalComponent,{
-      data: {id: idUser}, //Se pasan valores a través del componente
+      data: {id: idMateria}, //Se pasan valores a través del componente
       height: '268px',
       width: '328px',
     });
     dialogRef.afterClosed().subscribe(result => {
       if(result.isDelete){
-        console.log("Usuario eliminado");
+        console.log("Materia eliminada");
         //Recargar página
         window.location.reload();
       }else{
-        alert("Usuario no eliminado ");
-        console.log("No se eliminó el usuario");
-        //alert("No se eliminó el usuario");
+        alert("Materia no eliminada");
+        console.log("No se eliminó la materia");
       }
     });
   }

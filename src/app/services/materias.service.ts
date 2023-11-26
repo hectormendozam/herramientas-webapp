@@ -41,14 +41,8 @@ export class MateriasService {
 
     if(!this.validatorService.required(data["nrc"])){
       error["nrc"] = this.errorService.required;
-    }else if(!this.validatorService.min(data["nrc"], 3)){
-      error["nrc"] = this.errorService.min(3);
-      alert("La longitud de caracteres de la NRC es menor, deben ser 3");
-    }else if(!this.validatorService.max(data["nrc"], 3)){
-      error["nrc"] = this.errorService.max(3);
-      alert("La longitud de caracteres de la NRC es mayor, deben ser 3");
     }else if(!this.validatorService.numeric(data["nrc"])){
-      alert("El formato es solo números");
+      error["nrc"] = this.errorService.numeric;
     } 
 
     if(!this.validatorService.required(data["nombre_materia"])){
@@ -59,52 +53,24 @@ export class MateriasService {
 
     if(!this.validatorService.required(data["seccion"])){
       error["seccion"] = this.errorService.required;
-    }else if(!this.validatorService.min(data["seccion"], 3)){
-      error["seccion"] = this.errorService.min(3);
-      alert("La longitud de caracteres de la sección es menor, deben ser 3");
-    }else if(!this.validatorService.max(data["seccion"], 3)){
-      error["seccion"] = this.errorService.max(3);
-      alert("La longitud de caracteres de la sección es mayor, deben ser 3");
     }else if(!this.validatorService.numeric(data["seccion"])){
-      alert("El formato es solo números");
+      error["seccion"] = this.errorService.numeric;
     }
 
     if(!this.validatorService.required(data["dias"])){
       error["dias"] = this.errorService.required;
-    }else if(!this.validatorService.max(data["dias"], 40)){
-      error["dias"] = this.errorService.max(40);
     }
 
     if(!this.validatorService.required(data["hora_inicio"])){
       error["hora_inicio"] = this.errorService.required;
-    }else if(!this.validatorService.min(data["hora_inicio"], 4)){
-      error["hora_inicio"] = this.errorService.min(4);
-      alert("La longitud de caracteres de la hora es menor, deben ser 4");
-    }else if(!this.validatorService.max(data["hora_inicio"], 4)){
-      error["hora_inicio"] = this.errorService.max(4);
-      alert("La longitud de caracteres de la hora es mayor, deben ser 4");
     } 
 
     if(!this.validatorService.required(data["hora_final"])){
       error["hora_final"] = this.errorService.required;
-    }else if(!this.validatorService.min(data["hora_final"], 4)){
-      error["hora_final"] = this.errorService.min(4);
-      alert("La longitud de caracteres de la hora es menor, deben ser 4");
-    }else if(!this.validatorService.max(data["hora_final"], 4)){
-      error["hora_final"] = this.errorService.max(4);
-      alert("La longitud de caracteres de la hora es mayor, deben ser 4");
     } 
 
     if(!this.validatorService.required(data["salon"])){
       error["salon"] = this.errorService.required;
-    }else if(!this.validatorService.min(data["salon"], 3)){
-      error["salon"] = this.errorService.min(3);
-      alert("La longitud de caracteres del salón es menor, deben ser 3");
-    }else if(!this.validatorService.max(data["salon"], 3)){
-      error["salon"] = this.errorService.max(3);
-      alert("La longitud de caracteres del salón es mayor, deben ser 3");
-    }else if(!this.validatorService.numeric(data["salon"])){
-      alert("El formato es solo números");
     }
 
     if(!this.validatorService.required(data["programa_educativo"])){
