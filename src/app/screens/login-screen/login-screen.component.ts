@@ -46,7 +46,7 @@ export class LoginScreenComponent implements OnInit {
       (response)=>{
         console.log(response);
         this.facadeService.saveUserData(response);
-        this.router.navigate(["home"]);
+        this.router.navigate(["home-inge"]);
       }, (error)=>{
         alert("No se pudo iniciar sesión");
       }
@@ -63,7 +63,7 @@ export class LoginScreenComponent implements OnInit {
   }
 
   public goRegistro(){
-    this.router.navigate(["registro"]);
+    this.router.navigate(["registro-inge"]);
   }
 
   public goNuevoLogin(){                     

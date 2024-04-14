@@ -7,6 +7,8 @@ import { NuevoLoginScreenComponent } from './screens/nuevo-login-screen/nuevo-lo
 import { RegistroProductoScreenComponent } from './screens/registro-producto-screen/registro-producto-screen.component';
 import { RegistroMateriaScreenComponent } from './screens/registro-materia-screen/registro-materia-screen.component';
 import { TablaMateriaScreenComponent } from './screens/tabla-materia-screen/tabla-materia-screen.component';
+import { RegistroIngeScreenComponent } from './screens/registro-inge-screen/registro-inge-screen.component';
+import { HomeIngeScreenComponent } from './screens/home-inge-screen/home-inge-screen.component';
 
 const routes: Routes = [
   // Aqui se agregan cada una de las rutas del proyecto
@@ -19,6 +21,8 @@ const routes: Routes = [
   {path : 'registro-materia', component: RegistroMateriaScreenComponent, pathMatch: 'full'},
   {path : 'tabla-materia', component: TablaMateriaScreenComponent, pathMatch: 'full'},
   {path : 'registro-materia/:id', component: RegistroMateriaScreenComponent, pathMatch: 'full'},
+  {path : 'registro-inge', component: RegistroIngeScreenComponent, pathMatch: 'full'},
+  {path : 'home-inge', component: HomeIngeScreenComponent, pathMatch: 'full'},
 ];
 
 @NgModule({
