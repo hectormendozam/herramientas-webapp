@@ -17,7 +17,7 @@
     align-items: center;
     gap: 3rem;
     //Fondo
-    background-image: url("/assets/images/login-bg.png");
+    background-image: url("/assets/images/Fondo.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     padding-top: 2rem;
@@ -33,15 +33,11 @@
     align-items: center;
 }
   
-.logo-buap{
+.logo-company{
     width: 280px;
-    height: 350px;
+    height: 400px;
 }
   
-.logo-fcc{
-    width: 500px;
-    height: 180px;
-}
   
 .card{
     width: 27rem;
