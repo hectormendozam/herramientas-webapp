@@ -25,7 +25,7 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    background-color: #0092B8;
+    background-color: #626262;
 }
 
 .title{
@@ -91,8 +91,8 @@ mat-form-field{
 .btn-primary {
     width: 208px;
     height: 48px;
-    background-color: #0092B8!important;
-    border-color: #0092B8!important;
+    background-color: #000000!important;
+    border-color: #000000!important;
     border-radius: 8px!important;
     opacity: 1;
     //Fuente
@@ -106,8 +106,8 @@ mat-form-field{
 }
 
 .btn-primary:hover {
-    background-color: #017895!important;
-    border-color: #017895!important;
+    background-color: #626262!important;
+    border-color: #626262!important;
 }
 
 .btn-danger{
