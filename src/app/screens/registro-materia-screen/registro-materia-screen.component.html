@@ -10,54 +10,46 @@
             </div>
             <div class="body-registro">
                 <mat-form-field class="mat-input" appearance="outline">
-                    <mat-label>NRC</mat-label>
-                    <input matInput [(ngModel)]="materia.nrc" name="nrc" mask='00000' placeholder="Escribe NRC">
+                    <mat-label>Nombre</mat-label>
+                    <input matInput [(ngModel)]="materia.nrc" name="nrc" mask='00000' placeholder="Escribe tu nombre">
                 </mat-form-field>
                 <div *ngIf="errors.nrc" class="invalid-feedback">{{ errors.nrc }}</div>
 
                 <mat-form-field class="mat-input" appearance="outline">
-                    <mat-label>Nombre de la materia</mat-label>
-                    <input matInput [(ngModel)]="materia.nombre_materia" placeholder="Escribe nombre de la materia">
+                    <mat-label>ID de Trabajador</mat-label>
+                    <input matInput [(ngModel)]="materia.nombre_materia" placeholder="Escribe tu ID de trabajador">
                 </mat-form-field>
                 <div *ngIf="errors.nombre_materia" class="invalid-feedback">{{ errors.nombre_materia }}</div>
-    
-                <mat-form-field class="mat-input" appearance="outline">
-                    <mat-label>Sección</mat-label>
-                    <input matInput [(ngModel)]="materia.seccion" mask='000' placeholder="Escribe sección">
-                </mat-form-field>
-                <div *ngIf="errors.seccion" class="invalid-feedback">{{ errors.seccion }}</div>
-    
-                <mat-form-field class="mat-input" appearance="outline">
-                    <mat-label>Días</mat-label>
-                    <input matInput [(ngModel)]="materia.dias" placeholder="Escribe días que se imparte">
-                </mat-form-field>
-                <div *ngIf="errors.dias" class="invalid-feedback">{{ errors.dias }}</div>
 
                 <mat-form-field class="mat-input" appearance="outline">
-                    <mat-label>Hora Inicial</mat-label>
+                    <mat-label>Hora de entrada</mat-label>
                     <input matInput [(ngModel)]="materia.hora_inicio" type="time" placeholder="Selecciona Hora de Inicio">
                 </mat-form-field>
                 <div *ngIf="errors.hora_inicio" class="invalid-feedback">{{ errors.hora_inicio }}</div>
-    
+
                 <mat-form-field class="mat-input" appearance="outline">
-                    <mat-label>Hora Final</mat-label>
-                    <input matInput [(ngModel)]="materia.hora_final" type="time" placeholder="Selecciona Hora de Finalización">
+                    <mat-label>Hora de Salida</mat-label>
+                    <input matInput [(ngModel)]="materia.hora_final" type="time" placeholder="Selecciona Hora de Salida">
                 </mat-form-field>
                 <div *ngIf="errors.hora_final" class="invalid-feedback">{{ errors.hora_final }}</div>
     
                 <mat-form-field class="mat-input" appearance="outline">
-                    <mat-label>Salón</mat-label>
-                    <input matInput [(ngModel)]="materia.salon" mask='000' placeholder="Escribe salón">
+                    <mat-label>Puesto de Trabajo</mat-label>
+                    <input matInput [(ngModel)]="materia.seccion" mask='000' placeholder="Escribe tu puesto de trabajo">
                 </mat-form-field>
-                <div *ngIf="errors.salon" class="invalid-feedback">{{ errors.salon }}</div>
+                <div *ngIf="errors.seccion" class="invalid-feedback">{{ errors.seccion }}</div>
     
                 <mat-form-field class="mat-input" appearance="outline">
-                    <mat-label>Programa Educativo</mat-label>
-                    <mat-select [(ngModel)]="materia.programa_educativo"> 
-                        <mat-option *ngFor = "let programa of programas" [value] = "programa">{{programa}}</mat-option>
-                    </mat-select>
+                    <mat-label>Nombre de usuario</mat-label>
+                    <input matInput [(ngModel)]="materia.dias" placeholder="Escribe tu nombre de usuario">
                 </mat-form-field>
-                <div *ngIf="errors.programa_educativo" class="invalid-feedback">{{ errors.programa_educativo }}</div>
+                <div *ngIf="errors.dias" class="invalid-feedback">{{ errors.dias }}</div>
+    
+                <mat-form-field class="mat-input" appearance="outline">
+                    <mat-label>Contraseña</mat-label>
+                    <input matInput [(ngModel)]="materia.salon" mask='000' placeholder="Escribe tu contraseña">
+                </mat-form-field>
+                <div *ngIf="errors.salon" class="invalid-feedback">{{ errors.salon }}</div>
 
                 <div class="section-buttons">
                     <button class="btn-danger" (click)="regresar()">Cancelar</button>

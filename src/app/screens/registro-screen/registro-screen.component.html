@@ -10,13 +10,13 @@
             </div>
             <div class="body-registro">
                 <mat-form-field class="mat-input" appearance="outline">
-                    <mat-label>ID/Matrícula</mat-label>
+                    <mat-label>Nombre Completo</mat-label>
                     <input matInput [(ngModel)]="user.matricula" name="id" placeholder="Escribe ID o matrícula">
                 </mat-form-field>
                 <div *ngIf="errors.matricula" class="invalid-feedback">{{ errors.matricula }}</div>
 
                 <mat-form-field class="mat-input" appearance="outline">
-                    <mat-label>Nombre</mat-label>
+                    <mat-label>ID Trabajador</mat-label>
                     <input matInput [(ngModel)]="user.first_name" placeholder="Escribe nombre">
                 </mat-form-field>
                 <div *ngIf="errors.first_name" class="invalid-feedback">{{ errors.first_name }}</div>
