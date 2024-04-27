@@ -1,7 +1,7 @@
 <section class="login">
     <div class="wrapper">
         <div class="section-left">
-            <img src="/assets/images/img-login.png" class="logo-company">
+            <img src="/assets/images/Logo.png" class="logo-company">
         </div>
         <div class="section-right">
             <div class="card">
@@ -23,7 +23,7 @@
                             <div *ngIf="errors.password" class="invalid-feedback">{{ errors.password }}</div>
                         </div>
                         <div class="mb-3">
-                            <label class="form-check-label" for="checkbox-signin" (click)="goTablaMaterias()">Olvidé mi contraseña</label>
+                            <label class="form-check-label" for="checkbox-signin" (click)="goNuevoRegistro()">Olvidé mi contraseña</label>
                         </div>
                         <div class="d-flex flex-column align-items-center mb-3 w-100" style="text-align: center;">
                             <button class="btn btn-primary" type="submit" (click)="login()">Iniciar sesión</button>
@@ -35,5 +35,4 @@
         </div>
     </div>
 </section>
-
 

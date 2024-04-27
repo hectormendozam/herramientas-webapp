@@ -34,16 +34,16 @@ export class FacadeService {
   //Funcion para validar login
   public validarLogin(nombreusuario: String, password: String){
     var data = {
-      "nombreusuario": nombreusuario,
+      "username": nombreusuario,
       "password": password
     }
     console.log("Validando login... ", data);
     let error: any = [];
 
-    if(!this.validatorService.required(data["nombreusuario"])){
-      error["nombreusuario"] = this.errorService.required;
-    }else if(!this.validatorService.max(data["nombreusuario"], 40)){
-      error["nombreusuario"] = this.errorService.max(40);
+    if(!this.validatorService.required(data["username"])){
+      error["username"] = this.errorService.required;
+    }else if(!this.validatorService.max(data["username"], 40)){
+      error["username"] = this.errorService.max(40);
     }
 
     if(!this.validatorService.required(data["password"])){
