@@ -1,52 +1,56 @@
-<section class="home-page">
+<section class="homedirectorioe-page">
     <div class="wrapper">
         <div class="section-home">
             <div class="header-home">
-                <button class="logout-hide" mat-flat-button>Cerrar sesión</button>
+                <mat-icon class="icon-back" (click)="regresar()">arrow_back</mat-icon>
                 <!-- <mat-icon class="icon-back" (click)="logout()">arrow_back</mat-icon> -->
-                <span class="title">Plan it!</span>
+                <span class="title">Lista de contactos empresariales</span>
                 <button class="logout" mat-flat-button color="warn" (click)="logout()">Cerrar sesión</button>
             </div>
             <div class="body-home">
                 <div class="mat-elevation-z8">
                     <table mat-table [dataSource]="dataSource">
                         <!-- 1era fila -->
-                        <ng-container matColumnDef="matricula">
-                            <th mat-header-cell *matHeaderCellDef> Nombre de la Empresa </th>
-                            <td mat-cell *matCellDef="let element"> {{element.matricula}} </td>
+                        <ng-container matColumnDef="nombre_empresa">
+                            <th mat-header-cell *matHeaderCellDef> Empresa </th>
+                            <td mat-cell *matCellDef="let element"> {{element.nombre_empresa}} </td>
                         </ng-container>
                     
                         <!-- 2da fila -->
-                        <ng-container matColumnDef="nombre">
+                        <ng-container matColumnDef="giro">
                             <th mat-header-cell *matHeaderCellDef> Giro </th>
-                            <td mat-cell *matCellDef="let element"> {{element.first_name}} {{element.last_name}} </td>
+                            <td mat-cell *matCellDef="let element"> {{element.giro}} </td>
                         </ng-container>
                     
                         <!-- 3era fila -->
-                        <ng-container matColumnDef="email">
-                            <th mat-header-cell *matHeaderCellDef> Direccion Postal </th>
-                            <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+                        <ng-container matColumnDef="direccion_postal">
+                            <th mat-header-cell *matHeaderCellDef> Dirección postal </th>
+                            <td mat-cell *matCellDef="let element"> {{element.direccion_postal}} </td>
                         </ng-container>
                     
                         <!-- Symbol Column -->
-                        <ng-container matColumnDef="fecha_nacimiento">
+                        <ng-container matColumnDef="representante_legal">
                             <th mat-header-cell *matHeaderCellDef> Representante Legal </th>
-                            <td mat-cell *matCellDef="let element"> {{element.fecha_nacimiento | date: 'dd/MM/yyyy':'UTC'}} </td>
+                            <td mat-cell *matCellDef="let element"> {{element.representante_legal}} </td>
                         </ng-container>
-                        <ng-container matColumnDef="edad">
-                            <th mat-header-cell *matHeaderCellDef> Telefono </th>
-                            <td mat-cell *matCellDef="let element"> {{element.edad}} </td>
+
+                        <ng-container matColumnDef="telefono">
+                            <th mat-header-cell *matHeaderCellDef> Télefono </th>
+                            <td mat-cell *matCellDef="let element"> {{element.telefono}} </td>
                         </ng-container>
-                        <ng-container matColumnDef="curp">
-                            <th mat-header-cell *matHeaderCellDef> Correo Electrónico </th>
-                            <td mat-cell *matCellDef="let element"> {{element.curp}} </td>
+
+                        <ng-container matColumnDef="correo_electronico">
+                            <th mat-header-cell *matHeaderCellDef> Correo eléctronico </th>
+                            <td mat-cell *matCellDef="let element"> {{element.correo_electronico}} </td>
                         </ng-container>
+
                         <ng-container matColumnDef="editar">
                             <th mat-header-cell *matHeaderCellDef> Actualizar </th>
                             <td mat-cell *matCellDef="let element" class="td-editar">
                                 <i class="bi bi-pencil-square" (click)="goEditar(element.id)"></i> 
                             </td>
                         </ng-container>
+
                         <ng-container matColumnDef="eliminar">
                             <th mat-header-cell *matHeaderCellDef> Eliminar </th>
                             <td mat-cell *matCellDef="let element" class="td-eliminar"> 
@@ -58,13 +62,13 @@
                         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
                     </table>
                     <mat-paginator [pageSizeOptions]="[5, 10, 20]"
-                        showFirstLastButtons
-                        aria-label="Select page of periodic elements">
+                                   showFirstLastButtons
+                                   aria-label="Select page of users">
                     </mat-paginator>
                 </div>
-                <div class="section-buttons">
-                    <button class="btn-primary" (click)="goTablaMaterias()">Mostrar Materias</button>
-                    <button class="btn-primary" (click)="goRegistroMaterias()">Registrar Materias</button>
+                
+                <div class="botones">
+                    <button class="btn btn-primary" (click)="goRegistroContactoe()">Registar contactos</button>
                 </div>
             </div>
         </div>

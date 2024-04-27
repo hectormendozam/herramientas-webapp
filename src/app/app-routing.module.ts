@@ -11,6 +11,7 @@ import { RegistroIngeScreenComponent } from './screens/registro-inge-screen/regi
 import { HomeIngeScreenComponent } from './screens/home-inge-screen/home-inge-screen.component';
 import { MenuScreenComponent } from './screens/menu-screen/menu-screen.component';  
 import { DirectorioEScreenComponent } from './screens/directorio-e-screen/directorio-e-screen.component';
+import { RegistroContactoEScreenComponent } from './screens/registro-contacto-e-screen/registro-contacto-e-screen.component';
 
 const routes: Routes = [
   // Aqui se agregan cada una de las rutas del proyecto
@@ -26,7 +27,8 @@ const routes: Routes = [
   {path : 'registro-inge', component: RegistroIngeScreenComponent, pathMatch: 'full'},
   {path : 'home-inge', component: HomeIngeScreenComponent, pathMatch: 'full'},
   {path : 'menu', component: MenuScreenComponent, pathMatch: 'full'},
-  {path : 'directorio-emp', component: DirectorioEScreenComponent, pathMatch: 'full'}
+  {path : 'directorio-e', component: DirectorioEScreenComponent, pathMatch: 'full'},
+  {path : 'registro-contacto-e', component: RegistroContactoEScreenComponent, pathMatch: 'full'},
 ];
 
 @NgModule({
