@@ -39,6 +39,7 @@ import { RegistroIngeScreenComponent } from './screens/registro-inge-screen/regi
 import { HomeIngeScreenComponent } from './screens/home-inge-screen/home-inge-screen.component';
 import { MenuScreenComponent } from './screens/menu-screen/menu-screen.component';
 import { DirectorioEScreenComponent } from './screens/directorio-e-screen/directorio-e-screen.component';
+import { RegistroContactoEScreenComponent } from './screens/registro-contacto-e-screen/registro-contacto-e-screen.component';
 //Options mask
 export const options: Partial<IConfig> | (() => Partial<IConfig>) = {};
 
@@ -59,6 +60,7 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) = {};
     HomeIngeScreenComponent,
     MenuScreenComponent,
     DirectorioEScreenComponent,
+    RegistroContactoEScreenComponent,
   ],
   imports: 
   [
