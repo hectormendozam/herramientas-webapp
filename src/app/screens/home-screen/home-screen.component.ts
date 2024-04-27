@@ -35,7 +35,7 @@ export class HomeScreenComponent implements OnInit {
     ) { }
   
     ngOnInit(): void {
-      //Validar que haya inicio de sesión
+    //Validar que haya inicio de sesión
     //Obtengo el token del login
     this.token = this.facadeService.getSessionToken();
     console.log("Token: ", this.token);

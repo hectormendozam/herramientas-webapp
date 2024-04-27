@@ -78,7 +78,6 @@ export class MateriasService {
     }
 
     return error;
-   
   }
 
    // Aqui se agregan servicios http
@@ -88,7 +87,7 @@ export class MateriasService {
   }
 
     //Lista de materias
-    public obtenerListaMaterias (): Observable <any>{
+    public obtenerListaMaterias(): Observable <any>{
       var token = this.facadeService.getSessionToken();
       var headers = new HttpHeaders({ 'Content-Type': 'application/json' , 'Authorization': 'Bearer '+token});
       return this.http.get<any>(`${environment.url_api}/lista-materias/`, {headers:headers});
