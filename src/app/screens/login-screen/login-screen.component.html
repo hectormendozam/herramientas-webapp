@@ -9,7 +9,7 @@
                     <h3 class="title">INICIO DE SESIÓN</h3>
                     <div class="container-inputs">
                         <div class="pt-3 mb-3">
-                            <input [(ngModel)]="username" class="form-control" id="username" placeholder="Nombre de usuario">
+                            <input [(ngModel)]="username" class="form-control" id="nombreusuario" placeholder="Nombre de usuario">
                             <div *ngIf="errors.username" class="invalid-feedback">{{ errors.username }}</div>
                         </div>
                         <div class="pt-3 mb-3">
@@ -23,7 +23,7 @@
                             <div *ngIf="errors.password" class="invalid-feedback">{{ errors.password }}</div>
                         </div>
                         <div class="mb-3">
-                            <label class="form-check-label" for="checkbox-signin" (click)="goNuevoRegistro()">Olvidé mi contraseña</label>
+                            <label class="form-check-label" for="checkbox-signin" (click)="goTablaMaterias()">Olvidé mi contraseña</label>
                         </div>
                         <div class="d-flex flex-column align-items-center mb-3 w-100" style="text-align: center;">
                             <button class="btn btn-primary" type="submit" (click)="login()">Iniciar sesión</button>

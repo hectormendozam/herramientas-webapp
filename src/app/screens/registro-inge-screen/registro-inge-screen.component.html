@@ -47,9 +47,9 @@
     
                 <mat-form-field class="mat-input" appearance="outline">
                     <mat-label>Nombre de usuario</mat-label>
-                    <input matInput [(ngModel)]="user.username" placeholder="Escribe tu nombre de usuario">
+                    <input matInput [(ngModel)]="user.nombreusuario" placeholder="Escribe tu nombre de usuario">
                 </mat-form-field>
-                <div *ngIf="errors.username" class="invalid-feedback">{{ errors.username }}</div>
+                <div *ngIf="errors.nombreusuario" class="invalid-feedback">{{ errors.nombreusuario }}</div>
     
                 <mat-form-field class="mat-input" appearance="outline" *ngIf="!editar">
                     <mat-label>Contraseña</mat-label>

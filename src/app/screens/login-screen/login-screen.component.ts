@@ -20,7 +20,7 @@ export class LoginScreenComponent implements OnInit {
 
   public users_registrados: any = [];
   public logeo: boolean = false;
-  public flag_email: boolean = false;
+  public flag_username: boolean = false;
   public flag_pwd: boolean = false;
 
   constructor(
@@ -33,7 +33,7 @@ export class LoginScreenComponent implements OnInit {
   }
 
 
- public login(){
+public login(){
     //Validar
     this.errors = [];
 
@@ -74,5 +74,8 @@ export class LoginScreenComponent implements OnInit {
     this.router.navigate(["registro-producto"]);
   } 
   
+  public goTablaMaterias(){
+    this.router.navigate(["tabla-materia"])
+  }
 }//Fin clase
 

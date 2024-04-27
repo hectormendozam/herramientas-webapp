@@ -29,7 +29,7 @@ export class UsuariosService {
       'hora_inicio': '',
       'hora_final': '',
       'puesto': '',
-      'username': '',
+      'nombreusuario': '',
       'password': '',
       'confirmar_password': '',
     }
@@ -64,8 +64,8 @@ export class UsuariosService {
       error["puesto"] = this.errorService.required;
     }
 
-    if(!this.validatorService.required(data["username"])){
-      error["username"] = this.errorService.required;
+    if(!this.validatorService.required(data["nombreusuario"])){
+      error["nombreusuario"] = this.errorService.required;
     }
 
     if(!editar){
@@ -79,7 +79,6 @@ export class UsuariosService {
     }
 
     return error;
-   
   }
 
   // Aqui se agregan servicios http
