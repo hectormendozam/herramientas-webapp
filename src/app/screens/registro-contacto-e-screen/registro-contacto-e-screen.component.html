@@ -11,45 +11,44 @@
             <div class="body-registro">
                 <mat-form-field class="mat-input" appearance="outline">
                     <mat-label>Empresa</mat-label>
-                    <input matInput [(ngModel)]="user.first_name" name="nrc" placeholder="Escribe el nombre de la empresa del contacto">
+                    <input matInput [(ngModel)]="contactosemp.nombre_empresa" placeholder="Escribe el nombre de la empresa">
                 </mat-form-field>
-                <div *ngIf="errors.first_name" class="invalid-feedback">{{ errors.first_name }}</div>
+                <div *ngIf="errors.nombre_empresa" class="invalid-feedback">{{ errors.nombre_empresa }}</div>
 
                 <mat-form-field class="mat-input" appearance="outline">
                     <mat-label>Giro</mat-label>
-                    <input matInput [(ngModel)]="user.last_name" name="nrc" placeholder="Escribe tu nombre">
+                    <input matInput [(ngModel)]="contactosemp.giro" placeholder="Escribe el giro de la empresa">
                 </mat-form-field>
-                <div *ngIf="errors.last_name" class="invalid-feedback">{{ errors.last_name }}</div>
+                <div *ngIf="errors.giro" class="invalid-feedback">{{ errors.giro }}</div>
 
                 <mat-form-field class="mat-input" appearance="outline">
                     <mat-label>Dirección postal</mat-label>
-                    <input matInput [(ngModel)]="user.last_name" name="nrc" placeholder="Escribe tu nombre">
+                    <input matInput [(ngModel)]="contactosemp.direccion_postal" mask="00000" placeholder="Escribe la dirección postal">
                 </mat-form-field>
-                <div *ngIf="errors.last_name" class="invalid-feedback">{{ errors.last_name }}</div>
+                <div *ngIf="errors.direccion_postal" class="invalid-feedback">{{ errors.direccion_postal }}</div>
 
                 <mat-form-field class="mat-input" appearance="outline">
                     <mat-label>Representante legal</mat-label>
-                    <input matInput [(ngModel)]="user.last_name" name="nrc" placeholder="Escribe tu nombre">
+                    <input matInput [(ngModel)]="contactosemp.representante_legal" placeholder="Escribe el nombre del represantante legal">
                 </mat-form-field>
-                <div *ngIf="errors.last_name" class="invalid-feedback">{{ errors.last_name }}</div>
+                <div *ngIf="errors.representante_legal" class="invalid-feedback">{{ errors.representante_legal }}</div>
 
                 <mat-form-field class="mat-input" appearance="outline">
                     <mat-label>Teléfono</mat-label>
-                    <input matInput [(ngModel)]="user.last_name" name="nrc" placeholder="Escribe tu nombre">
+                    <input matInput [(ngModel)]="contactosemp.telefono" mask="(000) 000-0000" placeholder="Escribe el teléfono de la empresa">
                 </mat-form-field>
-                <div *ngIf="errors.last_name" class="invalid-feedback">{{ errors.last_name }}</div>
+                <div *ngIf="errors.telefono" class="invalid-feedback">{{ errors.telefono }}</div>
 
                 <mat-form-field class="mat-input" appearance="outline">
                     <mat-label>Correro Eléctronico</mat-label>
-                    <input matInput [(ngModel)]="user.last_name" name="nrc" placeholder="Escribe tu nombre">
+                    <input matInput [(ngModel)]="contactosemp.correo_electronico" placeholder="Escribe el e-mail de la empresa">
                 </mat-form-field>
-                <div *ngIf="errors.last_name" class="invalid-feedback">{{ errors.last_name }}</div>
-
+                <div *ngIf="errors.correo_electronico" class="invalid-feedback">{{ errors.correo_electronico }}</div>
 
                 <div class="section-buttons">
                     <button class="btn-danger" (click)="regresar()">Cancelar</button>
-                    <button *ngIf="!editar" class="btn-primary" type="submit" (click)="registrar()">Registrar</button>
-                    <button *ngIf="editar" class="btn btn-primary" type="submit" (click)="actualizar()">Actualizar</button>
+                    <button *ngIf="!editar" class="btn-primary" type="submit" (click)="registrar()" >Registrar</button>
+                    <button *ngIf="editar" class="btn btn-primary" type="submit" >Actualizar</button>
                 </div>
             </div>
         </div>
