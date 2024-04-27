@@ -25,7 +25,7 @@ public goAgenda(){
 } 
 
 public goDirectorioEmpresarial(){
-  this.router.navigate([]);
+  this.router.navigate(["directorio-emp"]);
 }
 
 public goDirectorioPersonal(){
