@@ -10,7 +10,7 @@
             </div>
             <div class="body-registro">
                 <mat-form-field class="mat-input" appearance="outline">
-                    <mat-label>Nombre</mat-label>
+                    <mat-label>Nombre del usuario</mat-label>
                     <input matInput [(ngModel)]="user.first_name" name="nrc" placeholder="Escribe tu nombre">
                 </mat-form-field>
                 <div *ngIf="errors.first_name" class="invalid-feedback">{{ errors.first_name }}</div>

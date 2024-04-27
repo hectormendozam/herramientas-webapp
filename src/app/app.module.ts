@@ -37,6 +37,8 @@ import { TablaMateriaScreenComponent } from './screens/tabla-materia-screen/tabl
 import { EliminarMateriaModalComponent } from './modals/eliminar-materia-modal/eliminar-materia-modal.component';
 import { RegistroIngeScreenComponent } from './screens/registro-inge-screen/registro-inge-screen.component';
 import { HomeIngeScreenComponent } from './screens/home-inge-screen/home-inge-screen.component';
+import { MenuScreenComponent } from './screens/menu-screen/menu-screen.component';
+import { DirectorioEScreenComponent } from './screens/directorio-e-screen/directorio-e-screen.component';
 //Options mask
 export const options: Partial<IConfig> | (() => Partial<IConfig>) = {};
 
@@ -55,6 +57,8 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) = {};
     EliminarMateriaModalComponent,
     RegistroIngeScreenComponent,
     HomeIngeScreenComponent,
+    MenuScreenComponent,
+    DirectorioEScreenComponent,
   ],
   imports: 
   [
