@@ -6,7 +6,7 @@
     flex-direction: row;
     justify-content: center;
     align-items: flex-start;
-    background-color: #FFFFFF;
+    background-color: #2b2b2b;
 }
 
 .section-registro{
@@ -22,12 +22,16 @@
     padding-left: 1.5rem;
     padding-right: 1.5rem;
     width: 100%;
-    height: 10vh;
+    height: 8vh;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
     background-color: #2b2b2b;
+}
+
+.logo-company{
+    padding-top: 0rem;
 }
 
 .title{
@@ -70,7 +74,7 @@
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    padding-top: 1.5rem;
+    padding-top: 0rem;
     gap: 1.5rem;
 }
 
@@ -83,27 +87,31 @@ mat-form-field{
 .section-buttons{
     width: 100%;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-between;
     align-items: center;
     padding-bottom: 3rem;
 }
 
-.btn-primary {
-    width: 208px;
-    height: 48px;
-    background-color: #000000!important;
-    border-color: #000000!important;
-    border-radius: 8px!important;
+.btn-agenda {
+    width: 450px;
+    height: 90px;
+    background-color: #2b2b2b!important;
+    border-color: #e4e2dd!important;
+    border-width: 7px;
+    border-radius: 10px!important;
     opacity: 1;
+    
+    align-items: center;
     //Fuente
     text-align: center;
     font-family: Nexa-Bold;
-    font-size: 16px;
+    font-size: 25px;
     font-weight: bold;
     letter-spacing: 0px;
     color: #FFFFFF;
     opacity: 1;
+    margin-bottom: 3rem;
 }
 
 .btn-primary:hover {
@@ -126,6 +134,12 @@ mat-form-field{
     letter-spacing: 0px;
     color: #FFFFFF;
     opacity: 1;
+}
+
+.iconos{
+    width: 30px;
+    height: 30px;
+    margin-left: 2rem;
 }
 
 //Estilos mat-input

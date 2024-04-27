@@ -46,7 +46,7 @@ public login(){
       (response)=>{
         console.log(response);
         this.facadeService.saveUserData(response);
-        this.router.navigate(["home-inge"]);
+        this.router.navigate(["menu"]);
       }, (error)=>{
         alert("No se pudo iniciar sesión");
       }

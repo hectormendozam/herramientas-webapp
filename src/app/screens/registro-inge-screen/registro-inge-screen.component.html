@@ -4,13 +4,13 @@
         <div class="section-registro">
             <div class="header-registro">
                 <mat-icon class="icon-back" (click)="regresar()">arrow_back</mat-icon>
-                <span *ngIf="!editar" class="title">Registrar usuario</span>
+                <span *ngIf="!editar" class="title">Registrando usuario</span>
                 <span *ngIf="editar" class="title">Actualizar usuario</span>
                 <mat-icon class="icon-home">home</mat-icon>
             </div>
             <div class="body-registro">
                 <mat-form-field class="mat-input" appearance="outline">
-                    <mat-label>Nombre</mat-label>
+                    <mat-label>Nombre del usuario</mat-label>
                     <input matInput [(ngModel)]="user.first_name" name="nrc" placeholder="Escribe tu nombre">
                 </mat-form-field>
                 <div *ngIf="errors.first_name" class="invalid-feedback">{{ errors.first_name }}</div>
