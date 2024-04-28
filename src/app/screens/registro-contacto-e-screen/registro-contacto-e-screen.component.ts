@@ -35,17 +35,75 @@ export class RegistroContactoEScreenComponent implements OnInit {
   
   }
 
-    //Función para obtener un solo usuario por su ID
+
  
     public registrar(){
       //Validar
       this.errors = [];
   
-      this.errors = this.contactosempService.validarContactosEmp(this.contactosemp, this.editar);    if(!$.isEmptyObject(this.errors)){
+      this.errors = this.contactosempService.validarContactosEmp(this.contactosemp, this.editar);    
+      if(!$.isEmptyObject(this.errors)){
         //Pasa la validación y sale de la función
         return false;
       }
+
+
+       //Aquí si todo es correcto vamos a registrar - aquí se manda a llamar al servicio
+       this.contactosempService.registrarContactoEmp(this.contactosemp).subscribe(
+        (response)=>{
+          alert("Contacto empresarial registrado correctamente");
+          console.log("Contacto registrado: ", response);
+          this.router.navigate(["directorio-e"]);
+        }, (error)=>{
+          alert("No se pudo registrar el contacto empresarial");
+        }
+      )
     }
+
+    //Función para obtener los datos de una sola materia por su NRC
+ public obtenerMateriaByNRC(){
+  this.contactosempService.getContactoByID(this.idcontactoemp).subscribe(
+    (response)=>{
+      this.contactosemp = response;
+      //Agregamos valores faltantes
+      this.contactosemp.nombre_nombre_empresa = response.materia.nombre_nombre_empresa;
+      this.contactosemp.nombre_giro = response.materia.nombre_giro;
+      this.contactosemp.nombre_direccion_postal = response.materia.direccion_postal;
+      this.contactosemp.nombre_representante_legal = response.materia.representante_legal;
+      this.contactosemp.nombre_telefono = response.materia.nombre_telefono;
+      this.contactosemp.nombre_correo_electronico = response.materia.nombre_correo_electronico;
+
+      //this.materia.fecha_nacimiento = response.fecha_nacimiento.split("T")[0];
+      console.log("Datos contacto: ", this.contactosemp);
+    }, (error)=>{
+      alert("No se pudieron obtener los datos del contacto para editar");
+    }
+  );
+ }
+
+    //Funcion para actualizar datos de una materia (se llama al servicio de editar materia)
+ public actualizar(){
+  //Validación
+  this.errors = [];
+
+  this.errors = this.contactosempService.validarContactosEmp(this.contactosemp, this.editar);
+  if(!$.isEmptyObject(this.errors)){
+    return false;
+  }
+  console.log("Pasó la validación");
+
+  this.contactosempService.editarContactoemp(this.contactosemp).subscribe(
+    (response)=>{
+      alert("Materia editada correctamente");
+      console.log("Materia editada: ", response);
+      //Si se editó, entonces mandar al home de materias
+      this.router.navigate(["directorio-e"]);
+    }, (error)=>{
+      alert("No se pudo editar materia");
+    }
+  );
+}
+
 
   public regresar(){
     this.location.back();

@@ -6,6 +6,10 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { FacadeService } from './facade.service';
 
+const httpOptions = {
+  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+};
+
 @Injectable({
   providedIn: 'root'
 })
@@ -60,4 +64,29 @@ export class ContactosempService {
 
     return error;
   }
+
+   //Aquí van los servicios HTTP
+  //Servicio para registrar un nuevo usuario
+  public registrarContactoEmp (data: any): Observable <any>{
+    return this.http.post<any>(`${environment.url_api}/contactos/`,data, httpOptions);
+  }
+
+  public obtenerListaContactosEmp (): Observable <any>{
+    var token = this.facadeService.getSessionToken();
+    var headers = new HttpHeaders({ 'Content-Type': 'application/json' , 'Authorization': 'Bearer '+token});
+    return this.http.get<any>(`${environment.url_api}/lista-contactos/`, {headers:headers});
+  }
+
+  //Obtener un solo contacto por su ID
+  public getContactoByID(idcontactoemp: Number){
+    return this.http.get<any>(`${environment.url_api}/contactos/?id=${idcontactoemp}`,httpOptions); 
+  }
+
+    //Servicio para actualizar un contacto empresarial
+    public editarContactoemp (data: any): Observable <any>{
+      var token = this.facadeService.getSessionToken();
+      var headers = new HttpHeaders({ 'Content-Type': 'application/json' , 'Authorization': 'Bearer '+token});
+      return this.http.put<any>(`${environment.url_api}/contactos-edit/`, data, {headers:headers});
+    }
+
 }

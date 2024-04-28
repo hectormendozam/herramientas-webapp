@@ -5,7 +5,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { EliminarUserModalComponent } from 'src/app/modals/eliminar-user-modal/eliminar-user-modal.component';
 import { FacadeService } from 'src/app/services/facade.service';
-import { UsuariosService } from 'src/app/services/usuarios.service';
+import { ContactosempService } from 'src/app/services/contactosemp.service';
 import { Location } from '@angular/common';
 
 @Component({
@@ -15,10 +15,10 @@ import { Location } from '@angular/common';
 })
 export class DirectorioEScreenComponent implements OnInit {
   public token : string = "";
-  public lista_usuarios: any[] = [];
+  public lista_contactos: any[] = [];
 
   displayedColumns: string[] = ['nombre_empresa', 'giro', 'direccion_postal', 'representante_legal', 'telefono', 'correo_electronico', 'editar', 'eliminar'];
-  dataSource = new MatTableDataSource<DatosUsuario>(this.lista_usuarios as DatosUsuario[]);
+  dataSource = new MatTableDataSource<DatosContactosemp>(this.lista_contactos as DatosContactosemp[]);
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
@@ -26,10 +26,9 @@ export class DirectorioEScreenComponent implements OnInit {
     this.dataSource.paginator = this.paginator;
   }
   
-
   constructor(
     private facadeService: FacadeService,
-    private usuariosService: UsuariosService,
+    private contactosempService: ContactosempService,
     private router: Router,
     public dialog: MatDialog,
     private location: Location
@@ -45,7 +44,7 @@ export class DirectorioEScreenComponent implements OnInit {
       this.router.navigate([""]);
     }
     //Mandar a ejecutar la función
-    this.obtenerUsuarios();
+    this.obtenerListaContactosEmp();
 
     //Para paginador
     this.initPaginator();
@@ -77,24 +76,16 @@ export class DirectorioEScreenComponent implements OnInit {
   }
 
   //Obtener lista de usuarios
-  public obtenerUsuarios(){
-    this.usuariosService.obtenerListaUsers().subscribe(
+  public obtenerListaContactosEmp(){
+    this.contactosempService.obtenerListaContactosEmp().subscribe(
       (response)=>{
-        this.lista_usuarios = response;
-        console.log("Lista users: ", this.lista_usuarios);
-        if(this.lista_usuarios.length > 0){
-          //Agregar datos del nombre e email
-          this.lista_usuarios.forEach(usuario => {
-            usuario.first_name = usuario.user.first_name;
-            usuario.last_name = usuario.user.last_name;
-            usuario.email = usuario.user.email;
-          });
-          console.log("Otro user: ", this.lista_usuarios);
-          
-          this.dataSource = new MatTableDataSource<DatosUsuario>(this.lista_usuarios as DatosUsuario[]);
+        this.lista_contactos = response;
+        console.log("Lista materias: ", this.lista_contactos);
+        if(this.lista_contactos.length > 0){
+          this.dataSource = new MatTableDataSource<DatosContactosemp>(this.lista_contactos as DatosContactosemp[]);
         }
       }, (error)=>{
-        alert("No se pudo obtener la lista de contactos");
+        alert("No se pudo obtener la lista de materias");
       }
     );
   }
@@ -156,17 +147,12 @@ export class DirectorioEScreenComponent implements OnInit {
 }//Aquí cierra la clase principal
 
 //Esto va fuera de la llave que cierra la clase
-export interface DatosUsuario {
+export interface DatosContactosemp {
   id: number,
-  matricula: number;
-  first_name: string;
-  last_name: string;
-  email: string;
-  fecha_nacimiento: string,
-  curp: string,
-  rfc: string,
-  edad: number,
+  nombre_empresa: number;
+  giro: string;
+  direccion_postal: string;
+  representante_legal: string;
   telefono: string,
-  ocupacion: string
-
+  correo_electronico: string
 }
