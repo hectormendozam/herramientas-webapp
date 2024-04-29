@@ -3,7 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
-import { EliminarUserModalComponent } from 'src/app/modals/eliminar-user-modal/eliminar-user-modal.component';
+import { EliminarContactoeModalComponent } from 'src/app/modals/eliminar-contactoe-modal/eliminar-contactoe-modal.component';
 import { FacadeService } from 'src/app/services/facade.service';
 import { ContactosempService } from 'src/app/services/contactosemp.service';
 import { Location } from '@angular/common';
@@ -123,22 +123,22 @@ export class DirectorioEScreenComponent implements OnInit {
   }
 
   //Función para eliminar
-  public delete(idUser: number){
-    console.log("User:", idUser);
-    const dialogRef = this.dialog.open(EliminarUserModalComponent,{
-      data: {id: idUser}, //Se pasan valores a través del componente
+  public delete(idcontactoemp: number){
+    console.log("User:", idcontactoemp);
+    const dialogRef = this.dialog.open(EliminarContactoeModalComponent,{
+      data: {id: idcontactoemp}, //Se pasan valores a través del componente
       height: '268px',
       width: '328px',
     });
 
     dialogRef.afterClosed().subscribe(result => {
       if(result.isDelete){
-        console.log("Usuario eliminado");
+        console.log("Contacto eliminado");
         //Recargar página
         window.location.reload();
       }else{
-        alert("Usuario no eliminado ");
-        console.log("No se eliminó el usuario");
+        alert("Contacto no eliminado ");
+        console.log("No se eliminó el contacto");
         //alert("No se eliminó el usuario");
       }
     });
