@@ -106,8 +106,8 @@ export class DirectorioEScreenComponent implements OnInit {
   }
 
   //Funcion para editar
-  public goEditar(idUser: number){
-    this.router.navigate(["registro/"+idUser]);
+  public goEditar(idcontactoemp: number){
+    this.router.navigate(["registro-contacto-e/"+idcontactoemp]);
   }
 
   public regresar(){

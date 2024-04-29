@@ -29,6 +29,7 @@ const routes: Routes = [
   {path : 'menu', component: MenuScreenComponent, pathMatch: 'full'},
   {path : 'directorio-e', component: DirectorioEScreenComponent, pathMatch: 'full'},
   {path : 'registro-contacto-e', component: RegistroContactoEScreenComponent, pathMatch: 'full'},
+  {path : 'registro-contacto-e/:id', component: RegistroContactoEScreenComponent, pathMatch: 'full'},
 ];
 
 @NgModule({

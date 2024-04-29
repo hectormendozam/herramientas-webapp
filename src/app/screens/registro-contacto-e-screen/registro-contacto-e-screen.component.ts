@@ -29,7 +29,18 @@ export class RegistroContactoEScreenComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
- 
+    this.contactosemp = this.contactosempService.esquemaUser();
+    //El primer if valida si existe un parámetro en la URL
+    if(this.activatedRoute.snapshot.params['id'] != undefined){
+      this.editar = true;
+      //Asignamos a nuestra variable global el valor del ID que viene por la URL
+      this.idcontactoemp = this.activatedRoute.snapshot.params['id'];
+      console.log("ID User: ", this.idcontactoemp);
+      //Al iniciar la vista obtiene el usuario por su ID
+      this.obtenerContactoByID();
+    }
+    //Imprimir datos en consola
+    console.log("User: ", this.contactosemp);
 
     //Imprimir datos en consola
   
@@ -61,7 +72,7 @@ export class RegistroContactoEScreenComponent implements OnInit {
     }
 
     //Función para obtener los datos de una sola materia por su NRC
- public obtenerMateriaByNRC(){
+ public obtenerContactoByID(){
   this.contactosempService.getContactoByID(this.idcontactoemp).subscribe(
     (response)=>{
       this.contactosemp = response;
@@ -81,7 +92,7 @@ export class RegistroContactoEScreenComponent implements OnInit {
   );
  }
 
-    //Funcion para actualizar datos de una materia (se llama al servicio de editar materia)
+    //Funcion para actualizar datos de una materia (se llama al servicio de editar contacto)
  public actualizar(){
   //Validación
   this.errors = [];
@@ -94,12 +105,12 @@ export class RegistroContactoEScreenComponent implements OnInit {
 
   this.contactosempService.editarContactoemp(this.contactosemp).subscribe(
     (response)=>{
-      alert("Materia editada correctamente");
+      alert("Contacto editado correctamente");
       console.log("Materia editada: ", response);
       //Si se editó, entonces mandar al home de materias
       this.router.navigate(["directorio-e"]);
     }, (error)=>{
-      alert("No se pudo editar materia");
+      alert("No se pudo editar el contacto");
     }
   );
 }
