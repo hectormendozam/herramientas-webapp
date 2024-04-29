@@ -111,7 +111,7 @@ export class DirectorioEScreenComponent implements OnInit {
   }
 
   public regresar(){
-    this.location.back();
+    this.router.navigate(["menu"]);
   }
 
   public goRegistroContactoe(){
