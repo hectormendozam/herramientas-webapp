@@ -1,0 +1,56 @@
+<section class="registro-user">
+    <div class="wrapper">
+        <!-- Va a englobar todo el formulario con la cabecera -->
+        <div class="section-registro">
+            <div class="header-registro">
+                <mat-icon class="icon-back" (click)="regresar()">arrow_back</mat-icon>
+                <span *ngIf="!editar" class="title">Registrar contacto personal</span>
+                <span *ngIf="editar" class="title">Actualizar contacto personal</span>
+                <mat-icon class="icon-home">home</mat-icon>
+            </div>
+            <div class="body-registro">
+                <mat-form-field class="mat-input" appearance="outline">
+                    <mat-label>Nombre</mat-label>
+                    <input matInput [(ngModel)]="contactop.nombre_contacto" placeholder="Escribe el nombre del contacto">
+                </mat-form-field>
+                <div *ngIf="errors.nombre_contacto" class="invalid-feedback">{{ errors.nombre_contacto }}</div>
+
+                <mat-form-field class="mat-input" appearance="outline">
+                    <mat-label>Dirección postal</mat-label>
+                    <input matInput [(ngModel)]="contactop.direccion_postal" mask="00000" placeholder="Escribe la dirección postal del contacto">
+                </mat-form-field>
+                <div *ngIf="errors.direccion_postal" class="invalid-feedback">{{ errors.direccion_postal }}</div>
+
+                <mat-form-field class="mat-input" appearance="outline">
+                    <mat-label>Correo eléctronico</mat-label>
+                    <input matInput [(ngModel)]="contactop.correo_electronico" placeholder="Escribe el e-mail del contacto">
+                </mat-form-field>
+                <div *ngIf="errors.correo_electronico" class="invalid-feedback">{{ errors.correo_electronico }}</div>
+
+                <mat-form-field class="mat-input" appearance="outline">
+                    <mat-label>Teléfono particular</mat-label>
+                    <input matInput [(ngModel)]="contactop.telefono_particular" mask="(000) 000-0000" placeholder="Escribe el teléfono particular del contacto">
+                </mat-form-field>
+                <div *ngIf="errors.telefono_particular" class="invalid-feedback">{{ errors.telefono_particular }}</div>
+
+                <mat-form-field class="mat-input" appearance="outline">
+                    <mat-label>Teléfono celular</mat-label>
+                    <input matInput [(ngModel)]="contactop.telefono_celular" mask="(000) 000-0000" placeholder="Escribe el teléfono celular del contacto">
+                </mat-form-field>
+                <div *ngIf="errors.telefono_celular" class="invalid-feedback">{{ errors.telefono_celular }}</div>
+
+                <mat-form-field class="mat-input" appearance="outline">
+                    <mat-label>Parentesco</mat-label>
+                    <input matInput [(ngModel)]="contactop.parentesco" placeholder="Escribe el parentesco que tienes con el contacto">
+                </mat-form-field>
+                <div *ngIf="errors.parentesco" class="invalid-feedback">{{ errors.parentesco }}</div>
+
+                <div class="section-buttons">
+                    <button class="btn-danger" (click)="regresar()">Cancelar</button>
+                    <button *ngIf="!editar" class="btn-primary" type="submit" (click)="registrar()" >Registrar</button>
+                    <button *ngIf="editar" class="btn btn-primary" type="submit" (click)="actualizar()">Actualizar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

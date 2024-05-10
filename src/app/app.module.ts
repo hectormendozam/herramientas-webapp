@@ -41,6 +41,9 @@ import { MenuScreenComponent } from './screens/menu-screen/menu-screen.component
 import { DirectorioEScreenComponent } from './screens/directorio-e-screen/directorio-e-screen.component';
 import { RegistroContactoEScreenComponent } from './screens/registro-contacto-e-screen/registro-contacto-e-screen.component';
 import { EliminarContactoeModalComponent } from './modals/eliminar-contactoe-modal/eliminar-contactoe-modal.component';
+import { DirectorioPScreenComponent } from './screens/directorio-p-screen/directorio-p-screen.component';
+import { RegistroContactoPScreenComponent } from './screens/registro-contacto-p-screen/registro-contacto-p-screen.component';
+import { EliminarContactopModalComponent } from './modals/eliminar-contactop-modal/eliminar-contactop-modal.component';
 //Options mask
 export const options: Partial<IConfig> | (() => Partial<IConfig>) = {};
 
@@ -63,6 +66,9 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) = {};
     DirectorioEScreenComponent,
     RegistroContactoEScreenComponent,
     EliminarContactoeModalComponent,
+    DirectorioPScreenComponent,
+    RegistroContactoPScreenComponent,
+    EliminarContactopModalComponent,
   ],
   imports: 
   [

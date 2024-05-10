@@ -29,7 +29,7 @@ public goDirectorioEmpresarial(){
 }
 
 public goDirectorioPersonal(){
-  this.router.navigate([]);
+  this.router.navigate(["directorio-p"]);
 }
 
 }

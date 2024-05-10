@@ -12,6 +12,8 @@ import { HomeIngeScreenComponent } from './screens/home-inge-screen/home-inge-sc
 import { MenuScreenComponent } from './screens/menu-screen/menu-screen.component';  
 import { DirectorioEScreenComponent } from './screens/directorio-e-screen/directorio-e-screen.component';
 import { RegistroContactoEScreenComponent } from './screens/registro-contacto-e-screen/registro-contacto-e-screen.component';
+import { DirectorioPScreenComponent } from './screens/directorio-p-screen/directorio-p-screen.component';
+import { RegistroContactoPScreenComponent } from './screens/registro-contacto-p-screen/registro-contacto-p-screen.component';
 
 const routes: Routes = [
   // Aqui se agregan cada una de las rutas del proyecto
@@ -30,6 +32,9 @@ const routes: Routes = [
   {path : 'directorio-e', component: DirectorioEScreenComponent, pathMatch: 'full'},
   {path : 'registro-contacto-e', component: RegistroContactoEScreenComponent, pathMatch: 'full'},
   {path : 'registro-contacto-e/:id', component: RegistroContactoEScreenComponent, pathMatch: 'full'},
+  {path : 'directorio-p', component: DirectorioPScreenComponent, pathMatch: 'full'},
+  {path : 'registro-contacto-p', component: RegistroContactoPScreenComponent, pathMatch: 'full'},
+  {path : 'registro-contacto-p/:id', component: RegistroContactoPScreenComponent, pathMatch: 'full'},
 ];
 
 @NgModule({

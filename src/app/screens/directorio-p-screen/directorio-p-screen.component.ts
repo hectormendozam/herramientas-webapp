@@ -3,22 +3,22 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
-import { EliminarContactoeModalComponent } from 'src/app/modals/eliminar-contactoe-modal/eliminar-contactoe-modal.component';
 import { FacadeService } from 'src/app/services/facade.service';
-import { ContactosempService } from 'src/app/services/contactosemp.service';
 import { Location } from '@angular/common';
+import { ContactopService } from 'src/app/services/contactop.service';
+import { EliminarContactopModalComponent } from 'src/app/modals/eliminar-contactop-modal/eliminar-contactop-modal.component';
 
 @Component({
-  selector: 'app-directorio-e-screen',
-  templateUrl: './directorio-e-screen.component.html',
-  styleUrls: ['./directorio-e-screen.component.scss']
+  selector: 'app-directorio-p-screen',
+  templateUrl: './directorio-p-screen.component.html',
+  styleUrls: ['./directorio-p-screen.component.scss']
 })
-export class DirectorioEScreenComponent implements OnInit {
+export class DirectorioPScreenComponent implements OnInit {
   public token : string = "";
-  public lista_contactos: any[] = [];
+  public lista_contactop: any[] = [];
 
   displayedColumns: string[] = ['nombre_empresa', 'giro', 'direccion_postal', 'representante_legal', 'telefono', 'correo_electronico', 'editar', 'eliminar'];
-  dataSource = new MatTableDataSource<DatosContactosemp>(this.lista_contactos as DatosContactosemp[]);
+  dataSource = new MatTableDataSource<DatosContactop>(this.lista_contactop as DatosContactop[]);
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
@@ -28,7 +28,7 @@ export class DirectorioEScreenComponent implements OnInit {
   
   constructor(
     private facadeService: FacadeService,
-    private contactosempService: ContactosempService,
+    private contactopService: ContactopService,
     private router: Router,
     public dialog: MatDialog,
     private location: Location
@@ -44,7 +44,7 @@ export class DirectorioEScreenComponent implements OnInit {
       this.router.navigate([""]);
     }
     //Mandar a ejecutar la función
-    this.obtenerListaContactosEmp();
+    this.obtenerListaContactop();
 
     //Para paginador
     this.initPaginator();
@@ -76,16 +76,16 @@ export class DirectorioEScreenComponent implements OnInit {
   }
 
   //Obtener lista de usuarios
-  public obtenerListaContactosEmp(){
-    this.contactosempService.obtenerListaContactosEmp().subscribe(
+  public obtenerListaContactop(){
+    this.contactopService.obtenerListaContactop().subscribe(
       (response)=>{
-        this.lista_contactos = response;
-        console.log("Lista materias: ", this.lista_contactos);
-        if(this.lista_contactos.length > 0){
-          this.dataSource = new MatTableDataSource<DatosContactosemp>(this.lista_contactos as DatosContactosemp[]);
+        this.lista_contactop = response;
+        console.log("Lista contactos personales: ", this.lista_contactop);
+        if(this.lista_contactop.length > 0){
+          this.dataSource = new MatTableDataSource<DatosContactop>(this.lista_contactop as DatosContactop[]);
         }
       }, (error)=>{
-        alert("No se pudo obtener la lista de materias");
+        alert("No se pudo obtener la lista de contactos personales");
       }
     );
   }
@@ -106,15 +106,15 @@ export class DirectorioEScreenComponent implements OnInit {
   }
 
   //Funcion para editar
-  public goEditar(idcontactop: number){
-    this.router.navigate(["registro-contacto-p/"+idcontactop]);
+  public goEditar(idcontactoemp: number){
+    this.router.navigate(["registro-contacto-p/"+idcontactoemp]);
   }
 
   public regresar(){
     this.router.navigate(["menu"]);
   }
 
-  public goRegistroContactoe(){
+  public goRegistroContactoP(){
     this.router.navigate(["registro-contacto-p"]);
   }
 
@@ -122,37 +122,38 @@ export class DirectorioEScreenComponent implements OnInit {
     this.router.navigate(["home-materias"]);
   }
 
-  //Función para eliminar
-  public delete(idcontactoemp: number){
-    console.log("User:", idcontactoemp);
-    const dialogRef = this.dialog.open(EliminarContactoeModalComponent,{
-      data: {id: idcontactoemp}, //Se pasan valores a través del componente
-      height: '268px',
-      width: '328px',
-    });
+ //Función para eliminar
+ public delete(idcontactoemp: number){
+  console.log("User:", idcontactoemp);
+  const dialogRef = this.dialog.open(EliminarContactopModalComponent,{
+    data: {id: idcontactoemp}, //Se pasan valores a través del componente
+    height: '268px',
+    width: '328px',
+  });
 
-    dialogRef.afterClosed().subscribe(result => {
-      if(result.isDelete){
-        console.log("Contacto eliminado");
-        //Recargar página
-        window.location.reload();
-      }else{
-        alert("Contacto no eliminado ");
-        console.log("No se eliminó el contacto");
-        //alert("No se eliminó el usuario");
-      }
-    });
-  }
+  dialogRef.afterClosed().subscribe(result => {
+    if(result.isDelete){
+      console.log("Contacto eliminado");
+      //Recargar página
+      window.location.reload();
+    }else{
+      alert("Contacto no eliminado ");
+      console.log("No se eliminó el contacto");
+      //alert("No se eliminó el usuario");
+    }
+  });
+}
+
 
 }//Aquí cierra la clase principal
 
 //Esto va fuera de la llave que cierra la clase
-export interface DatosContactosemp {
+export interface DatosContactop {
   id: number,
-  nombre_empresa: number;
-  giro: string;
+  nombre_contacto: string;
   direccion_postal: string;
-  representante_legal: string;
-  telefono: string,
-  correo_electronico: string
+  correo_electronico: string;
+  telefono_particular: string;
+  telefono_celular: string,
+  parentesco: string
 }
