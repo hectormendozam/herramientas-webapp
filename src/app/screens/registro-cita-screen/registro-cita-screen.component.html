@@ -1,0 +1,63 @@
+<section class="registro-user">
+    <div class="wrapper">
+        <!-- Va a englobar todo el formulario con la cabecera -->
+        <div class="section-registro">
+            <div class="header-registro">
+                <mat-icon class="icon-back" (click)="regresar()">arrow_back</mat-icon>
+                <span *ngIf="!editar" class="title">Registrar cita</span>
+                <span *ngIf="editar" class="title">Actualizar cita</span>
+                <mat-icon class="icon-home">home</mat-icon>
+            </div>
+            <div class="body-registro">
+                <mat-form-field class="mat-input" appearance="outline">
+                    <mat-label>Nombre</mat-label>
+                    <input matInput [(ngModel)]="cita.nombre_persona" placeholder="Escribe el nombre de la persona o la empresa">
+                </mat-form-field>
+                <div *ngIf="errors.nombre_persona" class="invalid-feedback">{{ errors.nombre_persona }}</div>
+
+                <mat-form-field class="mat-input" appearance="outline">
+                    <mat-label>Fecha de la cita</mat-label>
+                    <input matInput [matDatepicker]="picker" [(ngModel)]="cita.fecha" (focus)="picker.open()" placeholder="Agrega la fecha de la cita" (dateChange)="changeFecha($event)" type="string">
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+                <div *ngIf="errors.fecha" class="invalid-feedback">{{ errors.fecha }}</div>
+
+                <mat-form-field class="mat-input" appearance="outline">
+                    <mat-label>Hora de inicio</mat-label>
+                    <input matInput [(ngModel)]="cita.hora_inicio" placeholder="Escribe la hora de inicio de la cita en formato 24 hrs. Ejemplo: 12:00">
+                </mat-form-field>
+                <div *ngIf="errors.hora_inicio" class="invalid-feedback">{{ errors.hora_inicio }}</div>
+
+                <mat-form-field class="mat-input" appearance="outline">
+                    <mat-label>Hora de finalización</mat-label>
+                    <input matInput [(ngModel)]="cita.hora_fin" placeholder="Escribe la hora de finalización de la cita en formato 24 hrs. Ejemplo: 12:00">
+                </mat-form-field>
+                <div *ngIf="errors.hora_fin" class="invalid-feedback">{{ errors.hora_fin }}</div>
+
+                <mat-form-field class="mat-input" appearance="outline">
+                    <mat-label>Lugar de la cita</mat-label>
+                    <mat-select [(ngModel)]="cita.lugar" placeholder="Selecciona el lugar de la cita">
+                      <mat-option value="Oficina central">Oficina central</mat-option>
+                      <mat-option value="Oficina personal">Oficina personal</mat-option>
+                      <mat-option value="Sala de juntas">Sala de juntas</mat-option>
+                      <mat-option value="Salón general">Salón general</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <div *ngIf="errors.lugar" class="invalid-feedback">{{ errors.lugar }}</div>
+
+                <mat-form-field class="mat-input" appearance="outline">
+                    <mat-label>Asunto a tratar</mat-label>
+                    <input matInput [(ngModel)]="cita.asunto" placeholder="Escribe el asunto a tratar en la cita">
+                </mat-form-field>
+                <div *ngIf="errors.asunto" class="invalid-feedback">{{ errors.asunto }}</div>
+
+                <div class="section-buttons">
+                    <button class="btn-danger" (click)="regresar()">Cancelar</button>
+                    <button *ngIf="!editar" class="btn-primary" type="submit" (click)="registrar()" >Registrar</button>
+                    <button *ngIf="editar" class="btn btn-primary" type="submit" (click)="actualizar()">Actualizar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

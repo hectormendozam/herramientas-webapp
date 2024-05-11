@@ -14,6 +14,8 @@ import { DirectorioEScreenComponent } from './screens/directorio-e-screen/direct
 import { RegistroContactoEScreenComponent } from './screens/registro-contacto-e-screen/registro-contacto-e-screen.component';
 import { DirectorioPScreenComponent } from './screens/directorio-p-screen/directorio-p-screen.component';
 import { RegistroContactoPScreenComponent } from './screens/registro-contacto-p-screen/registro-contacto-p-screen.component';
+import { AgendaScreenComponent } from './screens/agenda-screen/agenda-screen.component';
+import { RegistroCitaScreenComponent } from './screens/registro-cita-screen/registro-cita-screen.component';
 
 const routes: Routes = [
   // Aqui se agregan cada una de las rutas del proyecto
@@ -35,6 +37,9 @@ const routes: Routes = [
   {path : 'directorio-p', component: DirectorioPScreenComponent, pathMatch: 'full'},
   {path : 'registro-contacto-p', component: RegistroContactoPScreenComponent, pathMatch: 'full'},
   {path : 'registro-contacto-p/:id', component: RegistroContactoPScreenComponent, pathMatch: 'full'},
+  {path : 'agenda', component: AgendaScreenComponent, pathMatch: 'full'},
+  {path : 'registro-cita', component: RegistroCitaScreenComponent, pathMatch: 'full'},
+  {path : 'registro-cita/:id', component: RegistroCitaScreenComponent, pathMatch: 'full'},
 ];
 
 @NgModule({

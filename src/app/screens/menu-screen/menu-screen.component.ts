@@ -21,7 +21,7 @@ public regresar(){
 
 
 public goAgenda(){                     
-  this.router.navigate([]);
+  this.router.navigate(["agenda"]);
 } 
 
 public goDirectorioEmpresarial(){

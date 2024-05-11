@@ -44,6 +44,9 @@ import { EliminarContactoeModalComponent } from './modals/eliminar-contactoe-mod
 import { DirectorioPScreenComponent } from './screens/directorio-p-screen/directorio-p-screen.component';
 import { RegistroContactoPScreenComponent } from './screens/registro-contacto-p-screen/registro-contacto-p-screen.component';
 import { EliminarContactopModalComponent } from './modals/eliminar-contactop-modal/eliminar-contactop-modal.component';
+import { AgendaScreenComponent } from './screens/agenda-screen/agenda-screen.component';
+import { RegistroCitaScreenComponent } from './screens/registro-cita-screen/registro-cita-screen.component';
+import { EliminarCitaModalComponent } from './modals/eliminar-cita-modal/eliminar-cita-modal.component';
 //Options mask
 export const options: Partial<IConfig> | (() => Partial<IConfig>) = {};
 
@@ -69,6 +72,9 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) = {};
     DirectorioPScreenComponent,
     RegistroContactoPScreenComponent,
     EliminarContactopModalComponent,
+    AgendaScreenComponent,
+    RegistroCitaScreenComponent,
+    EliminarCitaModalComponent,
   ],
   imports: 
   [
