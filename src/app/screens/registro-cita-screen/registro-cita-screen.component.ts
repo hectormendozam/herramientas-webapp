@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CitasService } from 'src/app/services/citas.service';
+import { MatTableDataSource } from '@angular/material/table';
+import { ContactosempService } from 'src/app/services/contactosemp.service';
+import { ContactopService } from 'src/app/services/contactop.service';
 
 declare var $:any;
 
@@ -17,6 +20,10 @@ export class RegistroCitaScreenComponent implements OnInit {
   public cita: any = {};
   public idcita: Number = 0;
   public array_user: any[] = [];
+  public lista_contactosemp: any[] = [];
+  public lista_contactop: any[] = [];
+  dataSource = this.lista_contactosemp as DatosContactoemp[];
+  dataSourcep = this.lista_contactop as DatosContactop[];
 
   //Para detectar errores
   public errors:any ={};
@@ -26,7 +33,9 @@ export class RegistroCitaScreenComponent implements OnInit {
     private router: Router,
     private location: Location,
     public activatedRoute: ActivatedRoute,
-    private citasService: CitasService
+    private citasService: CitasService,
+    private contactosempService: ContactosempService,
+    private contactopService: ContactopService
   ) { }
 
   ngOnInit(): void {
@@ -42,6 +51,10 @@ export class RegistroCitaScreenComponent implements OnInit {
     }
     //Imprimir datos en consola
     console.log("User: ", this.cita);
+
+    //Mandar a ejecutar la función
+    this.obtenerListaContactosEmp();
+    this.obtenerListaContactop();
 
     //Imprimir datos en consola
   
@@ -133,4 +146,45 @@ export class RegistroCitaScreenComponent implements OnInit {
     this.cita.fecha = event.value.toISOString().split("T")[0];
     console.log("Fecha: ", this.cita.fecha);
   }
+
+ //Obtener lista de contactos empresariales
+ public obtenerListaContactosEmp(){
+  this.contactosempService.obtenerListaContactosEmp().subscribe(
+    (response)=>{
+      this.lista_contactosemp = response;
+      console.log("Lista contactos empresariales: ", this.lista_contactosemp);
+      if(this.lista_contactosemp.length > 0){
+        this.dataSource = this.lista_contactosemp as DatosContactoemp[];
+      }
+    }, (error)=>{
+      alert("No se pudo obtener la lista de materias");
+    }
+  );
+}
+
+  //Obtener lista de contactos personales
+  public obtenerListaContactop(){
+    this.contactopService.obtenerListaContactop().subscribe(
+      (response)=>{
+        this.lista_contactop = response;
+        console.log("Lista contactos personales: ", this.lista_contactop);
+        if(this.lista_contactop.length > 0){
+          this.dataSourcep = this.lista_contactop as DatosContactop[];
+        }
+      }, (error)=>{
+        alert("No se pudo obtener la lista de contactos personales");
+      }
+    );
+  }
+
+}
+
+export interface DatosContactoemp {
+  id: number,
+  nombre_empresa: string;
+}
+
+export interface DatosContactop {
+  id: number,
+  nombre_contacto: string;
 }

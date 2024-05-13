@@ -11,9 +11,13 @@
             <div class="body-registro">
                 <mat-form-field class="mat-input" appearance="outline">
                     <mat-label>Nombre</mat-label>
-                    <input matInput [(ngModel)]="cita.nombre_persona" placeholder="Escribe el nombre de la persona o la empresa">
+                    <mat-select [(ngModel)]="cita.nombre_persona" placeholder="Selecciona el nombre de la persona o empresa">
+                        <mat-option *ngFor="let citaItem of dataSource" [value]="citaItem.nombre_empresa">{{ citaItem.nombre_empresa }}</mat-option>
+                        <mat-option *ngFor="let citaItem2 of dataSourcep" [value]="citaItem2.nombre_contacto">{{ citaItem2.nombre_contacto }}</mat-option>
+                    </mat-select>
                 </mat-form-field>
-                <div *ngIf="errors.nombre_persona" class="invalid-feedback">{{ errors.nombre_persona }}</div>
+                <div *ngIf="errors.nombre_empresa" class="invalid-feedback">{{ errors.nombre_empresa }}</div>
+
 
                 <mat-form-field class="mat-input" appearance="outline">
                     <mat-label>Fecha de la cita</mat-label>
