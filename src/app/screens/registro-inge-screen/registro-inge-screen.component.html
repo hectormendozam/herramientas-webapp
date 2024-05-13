@@ -24,14 +24,16 @@
                     <input matInput [(ngModel)]="user.id_trabajador" placeholder="Escribe tu ID de trabajador">
                 </mat-form-field>
                 <div *ngIf="errors.id_trabajador" class="invalid-feedback">{{ errors.id_trabajador }}</div>
+
                 <mat-form-field class="mat-input" appearance="outline">
-                    <mat-label>Hora de entrada</mat-label>
-                    <input matInput [(ngModel)]="user.hora_inicio" mask="00:00" placeholder="Escribe Hora de Salida en formato 24hrs">
+                    <mat-label>Hora de Inicio</mat-label>
+                    <input matInput [(ngModel)]="user.hora_inicio" placeholder="Escribe Hora de inicio en formato 24 hrs. Ejemplo: 12:00">
                 </mat-form-field>
                 <div *ngIf="errors.hora_inicio" class="invalid-feedback">{{ errors.hora_inicio }}</div>
+
                 <mat-form-field class="mat-input" appearance="outline">
                     <mat-label>Hora de Salida</mat-label>
-                    <input matInput [(ngModel)]="user.hora_final" mask="00:00" placeholder="Escribe Hora de Salida en formato 24hrs">
+                    <input matInput [(ngModel)]="user.hora_final"  placeholder="Escribe Hora de Salida en formato 24hrs">
                 </mat-form-field>
                 <div *ngIf="errors.hora_final" class="invalid-feedback">{{ errors.hora_final }}</div>
     
