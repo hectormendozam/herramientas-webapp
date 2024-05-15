@@ -107,7 +107,7 @@ export class DirectorioEScreenComponent implements OnInit {
 
   //Funcion para editar
   public goEditar(idcontactop: number){
-    this.router.navigate(["registro-contacto-p/"+idcontactop]);
+    this.router.navigate(["registro-contacto-e/"+idcontactop]);
   }
 
   public regresar(){
@@ -115,7 +115,7 @@ export class DirectorioEScreenComponent implements OnInit {
   }
 
   public goRegistroContactoe(){
-    this.router.navigate(["registro-contacto-p"]);
+    this.router.navigate(["registro-contacto-e"]);
   }
 
   public goHomeMaterias(){
