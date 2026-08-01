@@ -1,27 +1,124 @@
-# HerramientasWebapp
+# Herramientas Web — App
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.0.
+Aplicación web del proyecto de Ingeniería de Software II. Es el cliente de la API
+[herramientasweb_api](https://github.com/hectormendozam/herramientasweb_api) y reúne, en
+una sola interfaz, el registro de usuarios, la carga de materias, dos directorios de
+contactos (empresariales y personales) y una agenda de citas.
 
-## Development server
+Generada con [Angular CLI](https://github.com/angular/angular-cli) 16.2.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Tecnologías
 
-## Code scaffolding
+* Angular 16.2
+* Angular Material y Angular CDK 16.2
+* Bootstrap 5.2 y Bootstrap Icons
+* ngx-cookie-service para la sesión, ngx-mask para el formato de campos
+* TypeScript 5.1
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- - -
 
-## Build
+## Requisitos
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+* Node.js 18 o superior
+* Angular CLI 16 (`npm install -g @angular/cli@16`)
+* La API corriendo en `http://127.0.0.1:8000`
 
-## Running unit tests
+- - -
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Instalación
 
-## Running end-to-end tests
+1. Clonar el repositorio y entrar a la carpeta del proyecto.
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+2. Instalar las dependencias:
 
-## Further help
+   ```
+   npm install
+   ```
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+3. Verificar que `src/environments/environment.ts` apunte a la API:
+
+   ```typescript
+   export const environment = {
+     production: false,
+     url_api: "http://127.0.0.1:8000"
+   };
+   ```
+
+4. Levantar el servidor de desarrollo:
+
+   ```
+   ng serve
+   ```
+
+   La aplicación queda en `http://localhost:4200/` y se recarga sola al guardar cambios.
+
+> El backend acepta peticiones desde `http://localhost:4200`, que es el puerto por
+> omisión de `ng serve`. Si se cambia el puerto hay que agregarlo a `CORS_ORIGIN_WHITELIST`
+> en el `settings.py` de la API.
+
+- - -
+
+## Pantallas
+
+| Ruta | Pantalla |
+| --- | --- |
+| `/` | Inicio de sesión |
+| `/nuevo-login` | Inicio de sesión alterno |
+| `/registro`, `/registro/:id` | Alta y edición de usuarios |
+| `/registro-inge` | Alta de usuario con perfil de ingeniería |
+| `/home`, `/home-inge` | Inicio según el rol del usuario |
+| `/menu` | Menú principal |
+| `/registro-materia`, `/registro-materia/:id` | Alta y edición de materias |
+| `/tabla-materia` | Listado de materias |
+| `/directorio-e` | Directorio de contactos empresariales |
+| `/registro-contacto-e`, `/registro-contacto-e/:id` | Alta y edición de contactos empresariales |
+| `/directorio-p` | Directorio de contactos personales |
+| `/registro-contacto-p`, `/registro-contacto-p/:id` | Alta y edición de contactos personales |
+| `/agenda` | Agenda de citas |
+| `/registro-cita`, `/registro-cita/:id` | Alta y edición de citas |
+| `/registro-producto` | Alta de productos |
+
+- - -
+
+## Servicios
+
+Los servicios viven en `src/app/services/` y concentran la comunicación con la API:
+
+| Servicio | Responsabilidad |
+| --- | --- |
+| `facade.service.ts` | Sesión: login, logout, token y datos del usuario en cookies |
+| `usuarios.service.ts` | Usuarios y perfiles |
+| `materias.service.ts` | Materias |
+| `contactosemp.service.ts` | Directorio empresarial |
+| `contactop.service.ts` | Directorio personal |
+| `citas.service.ts` | Agenda de citas |
+| `productos.service.ts` | Productos |
+
+- - -
+
+## Estructura
+
+```
+src/
+├── index.html
+├── main.ts
+├── styles.scss
+├── environments/           URL de la API por ambiente
+└── app/
+    ├── app.module.ts
+    ├── app-routing.module.ts
+    ├── screens/            Una carpeta por pantalla
+    └── services/           Comunicación con la API
+```
+
+- - -
+
+## Comandos
+
+| Comando | Descripción |
+| --- | --- |
+| `ng serve` | Servidor de desarrollo en `http://localhost:4200/` |
+| `ng build` | Compila el proyecto en `dist/` |
+| `npm run watch` | Compila en modo desarrollo y observa los cambios |
+| `ng test` | Ejecuta las pruebas unitarias con [Karma](https://karma-runner.github.io) |
+| `ng generate component <nombre>` | Genera un componente nuevo |
